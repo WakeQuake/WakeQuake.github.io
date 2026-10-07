@@ -28,5 +28,5 @@ Membres d'équipe :
 Nom du produit : Wake Quake
 
 Description du produit :
-Wake Quake is the ultimate morning shake. Wether you are an early bird or simply a student that needs to wake up early
+Wake Quake is the ultimate morning shake. Whether you are an early bird or simply a student that needs to wake up early
 Wake Quake will make sure that you dont miss your important schedule. From the first morning snooze, it will challenge your will to stay in bed by giving you simple riddles, geography quizzes or math equations. If you don't complete the tasks, this machine will make you wake quick!
