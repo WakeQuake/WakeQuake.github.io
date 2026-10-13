@@ -1,9 +1,255 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Website 1</title>
+  <meta charset="UTF-8" />
+  <title>Smart Alarms</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Helvetica;
+      background-color: #cbd5e1;
+      color: #1e293b;
+      /* Prevent scrolling on outer canvas if desired, or let body scroll standardly */
+      min-width: 1200px;
+      padding: 30px;
+    }
+
+    /* Fixed Canvas Frame matching the wireframe aspect */
+    .app-frame {
+      width: 1140px;
+      min-height: 780px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Top Window Dots (wireframe indicator top right) */
+    .window-controls {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      gap: 6px;
+    }
+
+    .window-btn {
+      width: 18px;
+      height: 8px;
+      background-color: #e2e8f0;
+      border-radius: 2px;
+    }
+
+    /* Top Sticky Navigation / Home Bar */
+    .header-container {
+      width: 100%;
+      height: 52px;
+      position: sticky;
+      top: 16px;
+      z-index: 1000;
+      margin-top: 18px;
+      margin-bottom: 24px;
+      background-color: rgba(248, 250, 252, 0.95);
+      backdrop-filter: blur(8px);
+      border: 1px solid #94a3b8;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #1e293b;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      user-select: none;
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+    }
+
+    .top-nav a {
+      color: #1e293b;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.15s ease;
+    }
+
+    .top-nav a:hover,
+    .top-nav a.active {
+      color: #2563eb;
+    }
+
+    .header-utility-pill {
+      width: 70px;
+      height: 28px;
+      background-color: #cbd5e1;
+      border-radius: 50px;
+      border: 1px solid #94a3b8;
+    }
+
+    /* Fixed Layout Wrapper */
+    .layout-wrapper {
+      width: 1140px;
+      display: flex;
+      gap: 25px;
+    }
+
+    /* Fixed Sidebar */
+    .sidebar {
+      width: 210px;
+      height: 650px;
+      background-color: #f1f5f9;
+      border-radius: 6px;
+      padding: 20px 14px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .sidebar-title-pill {
+      width: 140px;
+      height: 30px;
+      margin: 0 auto 24px auto;
+      background-color: #e2e8f0;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1e293b;
+    }
+
+    /* Sidebar Items: pinned exactly to the 233x82 wireframe scale */
+    .variety-item {
+      width: 182px;
+      height: 64px;
+      background-color: #cbd5e1;
+      border-radius: 12px;
+      margin-bottom: 22px;
+      cursor: pointer;
+    }
+
+
+
+    /* Fixed Main Column */
+    .main-content {
+      width: 905px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    /* Product Display Card */
+    .hero-card {
+      width: 905px;
+      height: 510px;
+      background-color: #ffffff;
+      border-radius: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      width: 580px;
+      height: 460px;
+      object-fit: contain;
+    }
+
+    /* Features Panel */
+    .features-card {
+      width: 905px;
+      height: 120px;
+      background-color: #f1f5f9;
+      border-radius: 6px;
+      padding: 18px 24px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .features-title {
+      font-size: 0.95rem;
+      font-weight: bold;
+      color: #1e293b;
+      margin-bottom: 6px;
+    }
+
+    .features-text {
+      font-size: 0.85rem;
+      color: #475569;
+      line-height: 1.4;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is a sample HTML page.</p>
+
+  <div class="app-frame">
+    <!-- Top Right Decorative Controls from Blueprint -->
+    <div class="window-controls">
+      <div class="window-btn"></div>
+      <div class="window-btn"></div>
+      <div class="window-btn"></div>
+    </div>
+
+    <!-- Header Section (Sticky Home / Navigation Bar) -->
+    <header class="header-container">
+      <div class="brand-title">WakeQuake</div>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="#" class="active">Home</a>
+        <a href="#">Features</a>
+        <a href="#">Technology</a>
+        <a href="#">Support</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="header-utility-pill"></div>
+    </header>
+
+    <!-- Fixed Workspace -->
+    <div class="layout-wrapper">
+      
+      <!-- Fixed Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-title-pill">Our varieties</div>
+        
+        <div class="variety-item" style="margin-top: 14px;"></div>
+        <div class="variety-item"></div>
+        <div class="variety-item"></div>
+      </aside>
+
+      <!-- Fixed Main Column -->
+      <main class="main-content">
+        <section class="hero-card">
+          <img class="hero-image" src="https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&q=80&w=800" alt="Smart alarm" />
+        </section>
+
+        <section class="features-card">
+          <div class="features-title">Features</div>
+          <p class="features-text">Smart digital alarm with rotating projector, automatic synchronization, and built-in fast loading interface.</p>
+        </section>
+      </main>
+
+    </div>
+  </div>
+
 </body>
 </html>
