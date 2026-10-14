@@ -2,12 +2,12 @@
 Team Name: Wake Quake
 
 Team Members:
-- Dabady Illiodin (Student ID 300510720)
-- Hermann Kouonang Fipa (Student ID 300566236)
-- Princess Obeng Asante (Student ID 300553206)
-- Sophie Hanson (Student ID 300357850)
-- Zoe Sura Ortega (Student ID 300518014)
-- Yuriy Neyra Alvarado (Student ID 300527587)
+- Dabady Illiodin (Student Number 300510720)
+- Hermann Kouonang Fipa (Student Number 300566236)
+- Princess Obeng Asante (Student Number 300553206)
+- Sophie Hanson (Student Number 300357850)
+- Zoe Sura Ortega (Student Number 300518014)
+- Yuriy Neyra Alvarado (Student Number 300527587)
 
 Product Name: Wake Quake
 
@@ -27,6 +27,4 @@ Membres d'équipe :
 
 Nom du produit : Wake Quake
 
-Description du produit :
-
-Wake Quake sera lié à une camera placer au dessus de vous dans votre chambre. Wake Quake sera hors reseau et l'alarme disposera d'un model d'algorithme entrainer dans la reconnaissance d'objet dans une image (similaire au model yolo) a fin de detecter si l'utilisateur est toujours endormis ou pas à fin de le reveiller de façon efficace. 
+Description du produit : Wake Quake sera lié à une camera placer au dessus de vous dans votre chambre. Wake Quake sera hors reseau et l'alarme disposera d'un model d'algorithme entrainer dans la reconnaissance d'objet dans une image (similaire au model yolo) a fin de detecter si l'utilisateur est toujours endormis ou pas à fin de le reveiller de façon efficace. 
