@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Smart Alarms</title>
+  <title>WakeQuake - Smart Morning Alarm</title>
   <style>
     /* Reset & Base Styles */
     * {
@@ -12,15 +12,127 @@
     }
 
     body {
-      font-family: Helvetica;
+      font-family: Helvetica, Arial, sans-serif;
       background-color: #cbd5e1;
       color: #1e293b;
-      /* Prevent scrolling on outer canvas if desired, or let body scroll standardly */
       min-width: 1200px;
-      padding: 30px;
+      margin: 0;
+      padding-top: 84px;
+      padding-bottom: 40px;
     }
 
-    /* Fixed Canvas Frame matching the wireframe aspect */
+    /* Fixed Top Bar covering the full width and following user scroll */
+    .top-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      background-color: rgba(248, 250, 252, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #94a3b8;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .top-navbar-inner {
+      width: 1140px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+    }
+
+    /* Brand Logo / Wordmark on the Top Left */
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #1e293b;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      transition: color 0.15s ease;
+    }
+
+    .brand-title:hover {
+      color: #2563eb;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-item {
+      color: #334155;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-item:hover {
+      color: #2563eb;
+      background-color: #e2e8f0;
+    }
+
+    .nav-item.active {
+      color: #2563eb;
+      background-color: #e2e8f0;
+    }
+
+    /* Special Home Button */
+    .special-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #e2e8f0;
+      border: 1px solid #94a3b8;
+      color: #1e293b;
+      font-weight: 800;
+    }
+
+    .special-home-btn:hover,
+    .special-home-btn.active {
+      background-color: #2563eb;
+      color: #ffffff !important;
+      border-color: #2563eb;
+    }
+
+    .header-utility-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      padding: 0 20px;
+      background-color: #2563eb;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      border: 1px solid #1d4ed8;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.2s ease;
+    }
+
+    .header-utility-pill:hover {
+      background-color: #1d4ed8;
+    }
+
+    /* Fixed Canvas Frame */
     .app-frame {
       width: 1140px;
       min-height: 780px;
@@ -31,7 +143,7 @@
     /* Top Window Dots (wireframe indicator top right) */
     .window-controls {
       position: absolute;
-      top: 0;
+      top: -20px;
       right: 0;
       display: flex;
       gap: 6px;
@@ -44,88 +156,30 @@
       border-radius: 2px;
     }
 
-    /* Top Sticky Navigation / Home Bar */
-    .header-container {
-      width: 100%;
-      height: 52px;
-      position: sticky;
-      top: 16px;
-      z-index: 1000;
-      margin-top: 18px;
-      margin-bottom: 24px;
-      background-color: rgba(248, 250, 252, 0.95);
-      backdrop-filter: blur(8px);
-      border: 1px solid #94a3b8;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-    }
-
-    .brand-title {
-      font-size: 1.25rem;
-      font-weight: bold;
-      color: #1e293b;
-      letter-spacing: -0.01em;
-      display: flex;
-      align-items: center;
-      user-select: none;
-    }
-
-    .top-nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 26px;
-    }
-
-    .top-nav a {
-      color: #1e293b;
-      text-decoration: none;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: color 0.15s ease;
-    }
-
-    .top-nav a:hover,
-    .top-nav a.active {
-      color: #2563eb;
-    }
-
-    .header-utility-pill {
-      width: 70px;
-      height: 28px;
-      background-color: #cbd5e1;
-      border-radius: 50px;
-      border: 1px solid #94a3b8;
-    }
-
     /* Fixed Layout Wrapper */
     .layout-wrapper {
       width: 1140px;
       display: flex;
       gap: 25px;
+      margin-top: 10px;
     }
 
     /* Fixed Sidebar */
     .sidebar {
       width: 210px;
-      height: 650px;
+      min-height: 650px;
       background-color: #f1f5f9;
-      border-radius: 6px;
+      border-radius: 8px;
       padding: 20px 14px;
       flex-shrink: 0;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid #cbd5e1;
     }
 
     .sidebar-title-pill {
       width: 140px;
-      height: 30px;
-      margin: 0 auto 24px auto;
+      height: 32px;
+      margin: 0 auto 20px auto;
       background-color: #e2e8f0;
       border-radius: 50px;
       font-size: 0.85rem;
@@ -134,19 +188,40 @@
       align-items: center;
       justify-content: center;
       color: #1e293b;
+      border: 1px solid #cbd5e1;
     }
 
-    /* Sidebar Items: pinned exactly to the 233x82 wireframe scale */
+    /* Sidebar Items */
     .variety-item {
       width: 182px;
       height: 64px;
       background-color: #cbd5e1;
       border-radius: 12px;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 14px;
+      transition: background-color 0.2s ease;
+      text-decoration: none;
+      color: inherit;
     }
 
+    .variety-item:hover {
+      background-color: #94a3b8;
+      color: #ffffff;
+    }
 
+    .variety-title {
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .variety-desc {
+      font-size: 0.72rem;
+      opacity: 0.85;
+    }
 
     /* Fixed Main Column */
     .main-content {
@@ -162,89 +237,238 @@
       width: 905px;
       height: 510px;
       background-color: #ffffff;
-      border-radius: 6px;
+      border-radius: 8px;
       display: flex;
-      justify-content: center;
+      position: relative;
       align-items: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      justify-content: space-between;
+      padding: 40px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
       border: 1px solid #e2e8f0;
       overflow: hidden;
     }
 
+    .hero-text-content {
+      width: 380px;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background-color: #e2e8f0;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-heading {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+
+    .hero-subheading {
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 22px;
+      background-color: #2563eb;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 50px;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #1d4ed8;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 22px;
+      background-color: #f1f5f9;
+      color: #1e293b;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 50px;
+      border: 1px solid #cbd5e1;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e2e8f0;
+    }
+
+    .hero-image-wrap {
+      width: 440px;
+      height: 430px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .hero-image {
-      width: 580px;
-      height: 460px;
-      object-fit: contain;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
     /* Features Panel */
     .features-card {
       width: 905px;
-      height: 120px;
+      min-height: 120px;
       background-color: #f1f5f9;
-      border-radius: 6px;
-      padding: 18px 24px;
+      border-radius: 8px;
+      padding: 22px 28px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid #cbd5e1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .features-info {
+      max-width: 680px;
     }
 
     .features-title {
-      font-size: 0.95rem;
-      font-weight: bold;
+      font-size: 1.05rem;
+      font-weight: 800;
       color: #1e293b;
       margin-bottom: 6px;
     }
 
     .features-text {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: #475569;
-      line-height: 1.4;
+      line-height: 1.45;
+    }
+
+    .features-link-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 18px;
+      background-color: #e2e8f0;
+      color: #1e293b;
+      border-radius: 50px;
+      border: 1px solid #94a3b8;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .features-link-btn:hover {
+      background-color: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
     }
   </style>
 </head>
 <body>
 
+  <!-- Full-Width Sticky Top Navigation Bar Following Scroll -->
+  <header class="top-navbar">
+    <div class="top-navbar-inner">
+      <!-- 1. Brand Logo linking to Home Page -->
+      <a href="index.html" class="brand-title">WakeQuake</a>
+
+      <!-- 2. Nav links including Special Home button, Features, Pricing, and Team -->
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html" class="nav-item special-home-btn active"><span>🏠</span> Home</a>
+        <a href="features.html" class="nav-item">Product Features</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="team.html" class="nav-item">Team</a>
+      </nav>
+
+      <!-- 3. Header Action CTA -->
+      <a href="pricing.html" class="header-utility-pill">Pre-Order</a>
+    </div>
+  </header>
+
   <div class="app-frame">
-    <!-- Top Right Decorative Controls from Blueprint -->
+    <!-- Top Decorative Window Controls -->
     <div class="window-controls">
       <div class="window-btn"></div>
       <div class="window-btn"></div>
       <div class="window-btn"></div>
     </div>
 
-    <!-- Header Section (Sticky Home / Navigation Bar) -->
-    <header class="header-container">
-      <div class="brand-title">WakeQuake</div>
-      <nav class="top-nav" aria-label="Main navigation">
-        <a href="#" class="active">Home</a>
-        <a href="#">Features</a>
-        <a href="#">Technology</a>
-        <a href="#">Support</a>
-        <a href="#">Contact</a>
-      </nav>
-      <div class="header-utility-pill"></div>
-    </header>
-
-    <!-- Fixed Workspace -->
+    <!-- Fixed Workspace Layout -->
     <div class="layout-wrapper">
       
       <!-- Fixed Sidebar -->
       <aside class="sidebar">
         <div class="sidebar-title-pill">Our varieties</div>
         
-        <div class="variety-item" style="margin-top: 14px;"></div>
-        <div class="variety-item"></div>
-        <div class="variety-item"></div>
+        <a href="pricing.html" class="variety-item">
+          <div class="variety-title">Student Edition</div>
+          <div class="variety-desc">Essential bed shaker</div>
+        </a>
+        <a href="pricing.html" class="variety-item">
+          <div class="variety-title">Pro Projector</div>
+          <div class="variety-desc">180° ceiling beam</div>
+        </a>
+        <a href="pricing.html" class="variety-item">
+          <div class="variety-title">Vision Deluxe</div>
+          <div class="variety-desc">Offline YOLO sensor</div>
+        </a>
       </aside>
 
       <!-- Fixed Main Column -->
       <main class="main-content">
         <section class="hero-card">
-          <img class="hero-image" src="https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&q=80&w=800" alt="Smart alarm" />
+          <div class="hero-text-content">
+            <span class="hero-badge">Smart Morning System</span>
+            <h1 class="hero-heading">The Ultimate Morning Shake.</h1>
+            <p class="hero-subheading">
+              Wake Quake combines bed-shaking haptics, brain puzzles, and smart sensors to ensure you never miss your schedule again.
+            </p>
+            <div class="hero-cta-group">
+              <a href="features.html" class="btn-primary">Explore Features</a>
+              <a href="pricing.html" class="btn-secondary">View Pricing</a>
+            </div>
+          </div>
+          <div class="hero-image-wrap">
+            <img class="hero-image" src="https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&q=80&w=800" alt="WakeQuake Smart Alarm" />
+          </div>
         </section>
 
         <section class="features-card">
-          <div class="features-title">Features</div>
-          <p class="features-text">Smart digital alarm with rotating projector, automatic synchronization, and built-in fast loading interface.</p>
+          <div class="features-info">
+            <div class="features-title">Why WakeQuake?</div>
+            <p class="features-text">
+              Equipped with rotating projection, automatic sync, morning riddle challenges, and an offline privacy-first computer vision sensor.
+            </p>
+          </div>
+          <a href="features.html" class="features-link-btn">Full Specs →</a>
         </section>
       </main>
 

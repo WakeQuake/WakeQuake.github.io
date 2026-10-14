@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WakeQuake - Our Team</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      background-color: #cbd5e1;
+      color: #1e293b;
+      min-width: 1200px;
+      margin: 0;
+      padding-top: 84px;
+      padding-bottom: 40px;
+    }
+
+    /* Fixed Full-Width Top Bar Following User Scroll */
+    .top-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      background-color: rgba(248, 250, 252, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #94a3b8;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .top-navbar-inner {
+      width: 1140px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+    }
+
+    /* Brand Logo / Wordmark on the Top Left */
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #1e293b;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      transition: color 0.15s ease;
+    }
+
+    .brand-title:hover {
+      color: #2563eb;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-item {
+      color: #334155;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-item:hover {
+      color: #2563eb;
+      background-color: #e2e8f0;
+    }
+
+    .nav-item.active {
+      color: #2563eb;
+      background-color: #e2e8f0;
+    }
+
+    /* Special Home Button */
+    .special-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #e2e8f0;
+      border: 1px solid #94a3b8;
+      color: #1e293b;
+      font-weight: 800;
+    }
+
+    .special-home-btn:hover,
+    .special-home-btn.active {
+      background-color: #2563eb;
+      color: #ffffff !important;
+      border-color: #2563eb;
+    }
+
+    .header-utility-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      padding: 0 20px;
+      background-color: #2563eb;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      border: 1px solid #1d4ed8;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.2s ease;
+    }
+
+    .header-utility-pill:hover {
+      background-color: #1d4ed8;
+    }
+
+    /* Layout Frame */
+    .app-frame {
+      width: 1140px;
+      min-height: 780px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .window-controls {
+      position: absolute;
+      top: -20px;
+      right: 0;
+      display: flex;
+      gap: 6px;
+    }
+
+    .window-btn {
+      width: 18px;
+      height: 8px;
+      background-color: #e2e8f0;
+      border-radius: 2px;
+    }
+
+    .layout-wrapper {
+      width: 1140px;
+      display: flex;
+      gap: 25px;
+      margin-top: 10px;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      width: 210px;
+      min-height: 650px;
+      background-color: #f1f5f9;
+      border-radius: 8px;
+      padding: 20px 14px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid #cbd5e1;
+    }
+
+    .sidebar-title-pill {
+      width: 140px;
+      height: 32px;
+      margin: 0 auto 20px auto;
+      background-color: #e2e8f0;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1e293b;
+      border: 1px solid #cbd5e1;
+    }
+
+    .variety-item {
+      width: 182px;
+      height: 64px;
+      background-color: #cbd5e1;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 14px;
+      color: inherit;
+    }
+
+    .variety-title {
+      font-size: 0.82rem;
+      font-weight: bold;
+    }
+
+    .variety-desc {
+      font-size: 0.72rem;
+      opacity: 0.85;
+    }
+
+    /* Main Content Area */
+    .main-content {
+      width: 905px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    /* Team Hero Banner */
+    .team-hero {
+      width: 905px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 30px 36px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e2e8f0;
+    }
+
+    .page-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background-color: #e2e8f0;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .page-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .page-subtitle {
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    /* Team Grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .member-card {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 22px 20px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.07);
+    }
+
+    .avatar-pill {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: #e2e8f0;
+      border: 2px solid #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #2563eb;
+      margin-bottom: 12px;
+    }
+
+    .member-name {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 4px;
+    }
+
+    .member-role {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #2563eb;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .member-id-pill {
+      display: inline-block;
+      padding: 3px 10px;
+      background-color: #f1f5f9;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      color: #64748b;
+      border: 1px solid #cbd5e1;
+    }
+
+    /* Mission Card */
+    .mission-card {
+      background-color: #f1f5f9;
+      border-radius: 8px;
+      padding: 24px 28px;
+      border: 1px solid #cbd5e1;
+    }
+
+    .mission-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+
+    .mission-text {
+      font-size: 0.88rem;
+      color: #475569;
+      line-height: 1.55;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full-Width Sticky Top Navigation Bar -->
+  <header class="top-navbar">
+    <div class="top-navbar-inner">
+      <!-- 1. Brand Logo linking to Home Page -->
+      <a href="index.html" class="brand-title">WakeQuake</a>
+
+      <!-- 2. Nav links including Special Home button, Features, Pricing, and Team (active) -->
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html" class="nav-item special-home-btn"><span>🏠</span> Home</a>
+        <a href="features.html" class="nav-item">Product Features</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="team.html" class="nav-item active">Team</a>
+      </nav>
+
+      <!-- 3. Header Action CTA -->
+      <a href="pricing.html" class="header-utility-pill">Pre-Order</a>
+    </div>
+  </header>
+
+  <div class="app-frame">
+    <!-- Top Decorative Window Controls -->
+    <div class="window-controls">
+      <div class="window-btn"></div>
+      <div class="window-btn"></div>
+      <div class="window-btn"></div>
+    </div>
+
+    <!-- Workspace Layout -->
+    <div class="layout-wrapper">
+      
+      <!-- Fixed Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-title-pill">Project Hub</div>
+        
+        <div class="variety-item">
+          <div class="variety-title">SEG Project</div>
+          <div class="variety-desc">Software Engineering</div>
+        </div>
+        <div class="variety-item">
+          <div class="variety-title">AI & Vision</div>
+          <div class="variety-desc">Embedded YOLO Model</div>
+        </div>
+        <div class="variety-item">
+          <div class="variety-title">Haptics Lab</div>
+          <div class="variety-desc">Bed Shaker Hardware</div>
+        </div>
+        <div class="variety-item">
+          <div class="variety-title">Fall 2026</div>
+          <div class="variety-desc">Active Development</div>
+        </div>
+      </aside>
+
+      <!-- Fixed Main Column -->
+      <main class="main-content">
+        <section class="team-hero">
+          <span class="page-tag">SEG Engineering Team</span>
+          <h1 class="page-title">Meet the WakeQuake Creators.</h1>
+          <p class="page-subtitle">
+            Our collaborative team is designing and engineering WakeQuake to eliminate oversleeping through intelligent edge hardware, brain puzzles, and smart sensors.
+          </p>
+        </section>
+
+        <!-- 6 Team Members Grid from README -->
+        <div class="team-grid">
+          <!-- Member 1 -->
+          <div class="member-card">
+            <div class="avatar-pill">YN</div>
+            <h2 class="member-name">Yuriy Neyra Alvarado</h2>
+            <div class="member-role">Software & Hardware</div>
+            <span class="member-id-pill">ID: 300527587</span>
+          </div>
+
+          <!-- Member 2 -->
+          <div class="member-card">
+            <div class="avatar-pill">DI</div>
+            <h2 class="member-name">Dabady Illiodin</h2>
+            <div class="member-role">Systems & Vision AI</div>
+            <span class="member-id-pill">ID: 300510720</span>
+          </div>
+
+          <!-- Member 3 -->
+          <div class="member-card">
+            <div class="avatar-pill">HK</div>
+            <h2 class="member-name">Hermann Kouonang Fipa</h2>
+            <div class="member-role">Embedded Firmware</div>
+            <span class="member-id-pill">ID: 300566236</span>
+          </div>
+
+          <!-- Member 4 -->
+          <div class="member-card">
+            <div class="avatar-pill">PO</div>
+            <h2 class="member-name">Princess Obeng Asante</h2>
+            <div class="member-role">UI & Experience</div>
+            <span class="member-id-pill">ID: 300553206</span>
+          </div>
+
+          <!-- Member 5 -->
+          <div class="member-card">
+            <div class="avatar-pill">SH</div>
+            <h2 class="member-name">Sophie Hanson</h2>
+            <div class="member-role">Software Architecture</div>
+            <span class="member-id-pill">ID: 300357850</span>
+          </div>
+
+          <!-- Member 6 -->
+          <div class="member-card">
+            <div class="avatar-pill">ZS</div>
+            <h2 class="member-name">Zoe Sura Ortega</h2>
+            <div class="member-role">Quality & Verification</div>
+            <span class="member-id-pill">ID: 300518014</span>
+          </div>
+        </div>
+
+        <section class="mission-card">
+          <div class="mission-title">Our Project Mission</div>
+          <p class="mission-text">
+            WakeQuake was born from a common challenge faced by students and busy professionals: waking up on time reliably. By combining physical haptic vibrations, cognitive interactive challenges (math, geography, and riddles), and a private, offline computer vision sensor, WakeQuake ensures you are out of bed and ready for the day ahead.
+          </p>
+        </section>
+      </main>
+
+    </div>
+  </div>
+
+</body>
+</html>

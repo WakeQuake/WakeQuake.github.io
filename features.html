@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WakeQuake - Product Features</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      background-color: #cbd5e1;
+      color: #1e293b;
+      min-width: 1200px;
+      margin: 0;
+      padding-top: 84px;
+      padding-bottom: 40px;
+    }
+
+    /* Fixed Full-Width Top Bar Following User Scroll */
+    .top-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      background-color: rgba(248, 250, 252, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #94a3b8;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .top-navbar-inner {
+      width: 1140px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+    }
+
+    /* Brand Logo / Wordmark on the Top Left */
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #1e293b;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      transition: color 0.15s ease;
+    }
+
+    .brand-title:hover {
+      color: #2563eb;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-item {
+      color: #334155;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-item:hover {
+      color: #2563eb;
+      background-color: #e2e8f0;
+    }
+
+    .nav-item.active {
+      color: #2563eb;
+      background-color: #e2e8f0;
+    }
+
+    /* Special Home Button */
+    .special-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #e2e8f0;
+      border: 1px solid #94a3b8;
+      color: #1e293b;
+      font-weight: 800;
+    }
+
+    .special-home-btn:hover,
+    .special-home-btn.active {
+      background-color: #2563eb;
+      color: #ffffff !important;
+      border-color: #2563eb;
+    }
+
+    .header-utility-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      padding: 0 20px;
+      background-color: #2563eb;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      border: 1px solid #1d4ed8;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.2s ease;
+    }
+
+    .header-utility-pill:hover {
+      background-color: #1d4ed8;
+    }
+
+    /* Layout Frame */
+    .app-frame {
+      width: 1140px;
+      min-height: 780px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .window-controls {
+      position: absolute;
+      top: -20px;
+      right: 0;
+      display: flex;
+      gap: 6px;
+    }
+
+    .window-btn {
+      width: 18px;
+      height: 8px;
+      background-color: #e2e8f0;
+      border-radius: 2px;
+    }
+
+    .layout-wrapper {
+      width: 1140px;
+      display: flex;
+      gap: 25px;
+      margin-top: 10px;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      width: 210px;
+      min-height: 650px;
+      background-color: #f1f5f9;
+      border-radius: 8px;
+      padding: 20px 14px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid #cbd5e1;
+    }
+
+    .sidebar-title-pill {
+      width: 140px;
+      height: 32px;
+      margin: 0 auto 20px auto;
+      background-color: #e2e8f0;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1e293b;
+      border: 1px solid #cbd5e1;
+    }
+
+    .variety-item {
+      width: 182px;
+      height: 64px;
+      background-color: #cbd5e1;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 14px;
+      text-decoration: none;
+      color: inherit;
+      transition: background-color 0.2s ease;
+    }
+
+    .variety-item:hover {
+      background-color: #94a3b8;
+      color: #ffffff;
+    }
+
+    .variety-title {
+      font-size: 0.82rem;
+      font-weight: bold;
+    }
+
+    .variety-desc {
+      font-size: 0.72rem;
+      opacity: 0.85;
+    }
+
+    /* Main Content Area */
+    .main-content {
+      width: 905px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    /* Features Hero Banner */
+    .features-hero {
+      width: 905px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 32px 36px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e2e8f0;
+    }
+
+    .page-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background-color: #e2e8f0;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .page-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .page-subtitle {
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    /* Feature Cards Grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .feature-box {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 24px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .feature-icon-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background-color: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+
+    .feature-detail {
+      font-size: 0.86rem;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    .feature-footer-card {
+      background-color: #f1f5f9;
+      border-radius: 8px;
+      padding: 22px 28px;
+      border: 1px solid #cbd5e1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-action-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 22px;
+      background-color: #2563eb;
+      color: #ffffff;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: background-color 0.2s ease;
+    }
+
+    .footer-action-btn:hover {
+      background-color: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full-Width Sticky Top Navigation Bar -->
+  <header class="top-navbar">
+    <div class="top-navbar-inner">
+      <!-- 1. Brand Logo linking to Home Page -->
+      <a href="index.html" class="brand-title">WakeQuake</a>
+
+      <!-- 2. Nav links including Special Home button, Features (active), Pricing, and Team -->
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html" class="nav-item special-home-btn"><span>🏠</span> Home</a>
+        <a href="features.html" class="nav-item active">Product Features</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="team.html" class="nav-item">Team</a>
+      </nav>
+
+      <!-- 3. Header Action CTA -->
+      <a href="pricing.html" class="header-utility-pill">Pre-Order</a>
+    </div>
+  </header>
+
+  <div class="app-frame">
+    <!-- Top Decorative Window Controls -->
+    <div class="window-controls">
+      <div class="window-btn"></div>
+      <div class="window-btn"></div>
+      <div class="window-btn"></div>
+    </div>
+
+    <!-- Workspace Layout -->
+    <div class="layout-wrapper">
+      
+      <!-- Fixed Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-title-pill">Highlights</div>
+        
+        <div class="variety-item">
+          <div class="variety-title">YOLO Detection</div>
+          <div class="variety-desc">In-bed vs out-of-bed</div>
+        </div>
+        <div class="variety-item">
+          <div class="variety-title">Bed-Shaker</div>
+          <div class="variety-desc">Intense haptic motor</div>
+        </div>
+        <div class="variety-item">
+          <div class="variety-title">Morning Quizzes</div>
+          <div class="variety-desc">Math & geography</div>
+        </div>
+        <div class="variety-item">
+          <div class="variety-title">100% Offline</div>
+          <div class="variety-desc">Zero cloud leaks</div>
+        </div>
+      </aside>
+
+      <!-- Fixed Main Column -->
+      <main class="main-content">
+        <section class="features-hero">
+          <span class="page-tag">Cutting-Edge Hardware & AI</span>
+          <h1 class="page-title">Designed to Never Let You Oversleep.</h1>
+          <p class="page-subtitle">
+            WakeQuake blends intelligent offline computer vision, heavy bed-vibrating haptics, and brain challenges into one seamless bedside system.
+          </p>
+        </section>
+
+        <!-- Feature Grid -->
+        <div class="feature-grid">
+          <div class="feature-box">
+            <div>
+              <div class="feature-icon-pill">👁️</div>
+              <h2 class="feature-name">Offline YOLO Sleep Detection</h2>
+              <p class="feature-detail">
+                Linked to an overhead bedroom camera running an on-device YOLO object detection algorithm. It detects whether you are still asleep under the covers or standing up, shutting off only when you are truly awake.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-box">
+            <div>
+              <div class="feature-icon-pill">📳</div>
+              <h2 class="feature-name">High-Torque Bed Shaker</h2>
+              <p class="feature-detail">
+                For the heaviest sleepers and earplug wearers, WakeQuake features a plug-in vibration pad that physically shakes your mattress, cutting through the deepest REM sleep without mercy.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-box">
+            <div>
+              <div class="feature-icon-pill">🧠</div>
+              <h2 class="feature-name">Cognitive Quiz Snooze Lock</h2>
+              <p class="feature-detail">
+                No more subconscious snooze taps! To silence the morning alarm, you must solve randomized math problems, geography quizzes, or logic riddles on the responsive display.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-box">
+            <div>
+              <div class="feature-icon-pill">📽️</div>
+              <h2 class="feature-name">180° Rotating Projector</h2>
+              <p class="feature-detail">
+                Project clear time, date, and weather alerts onto your ceiling or bedroom wall with 180° rotation and auto-focus for easy viewing from any sleeping angle.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-box">
+            <div>
+              <div class="feature-icon-pill">🔒</div>
+              <h2 class="feature-name">Zero-Cloud Privacy Guarantee</h2>
+              <p class="feature-detail">
+                WakeQuake operates 100% offline. Visual sensor frames never leave your local device, and no personal video or audio is ever uploaded to any cloud server.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-box">
+            <div>
+              <div class="feature-icon-pill">⚡</div>
+              <h2 class="feature-name">Fast-Loading Interface</h2>
+              <p class="feature-detail">
+                Zero lag, instantaneous boot times, and automatic battery backup ensure your wake-up sequence triggers accurately even during unexpected power outages.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <section class="feature-footer-card">
+          <div>
+            <div style="font-weight: 800; font-size: 1.05rem; margin-bottom: 4px;">Ready to revolutionize your mornings?</div>
+            <div style="font-size: 0.86rem; color: #475569;">Explore our different editions and early bird student pricing.</div>
+          </div>
+          <a href="pricing.html" class="footer-action-btn">Compare Pricing →</a>
+        </section>
+      </main>
+
+    </div>
+  </div>
+
+</body>
+</html>
