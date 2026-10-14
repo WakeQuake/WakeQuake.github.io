@@ -27,4 +27,4 @@ Membres d'équipe :
 
 Nom du produit : Wake Quake
 
-Description du produit : Wake Quake sera lié à une camera placer au dessus de vous dans votre chambre. Wake Quake sera hors reseau et l'alarme disposera d'un model d'algorithme entrainer dans la reconnaissance d'objet dans une image (similaire au model yolo) a fin de detecter si l'utilisateur est toujours endormis ou pas à fin de le reveiller de façon efficace. 
+Description du produit : Wake Quake sera lié à une camera placer au dessus de vous dans votre chambre. Wake Quake sera hors reseau et l'alarme disposera d'un model algorithme entrainer dans la reconnaissance d'objet dans une image (similaire au model yolo) à fin de detecter si l'utilisateur est toujours endormis pour ensuite le reveiller. Si vous ne completer pas les tâches à temps, il aura des consequences.   
