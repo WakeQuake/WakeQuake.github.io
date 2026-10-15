@@ -5,7 +5,7 @@ Team Members:
 - Dabady Illiodin (Student Number 300510720)
 - Hermann Kouonang Fipa (Student Number 300566236)
 - Princess Obeng Asante (Student Number 300553206)
-- Sophie Hanson (Student Number 300357850)
+- Sophie Hanson (Student Number 300537850)
 - Zoe Sura Ortega (Student Number 300518014)
 - Yuriy Neyra Alvarado (Student Number 300527587)
 
