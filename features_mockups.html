@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Présentation des fonctionnalités du produit" />
+  <title>Product Features</title>
+  <style>
+    :root { --ink:#172334; --muted:#6d7b8c; --line:#d6e0e9; --sidebar:#f1f5f9; --blue:#c8d4e1; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-width:320px; background:linear-gradient(135deg,#dbe5ef,#cbd7e4); color:var(--ink); font-family:Arial,Helvetica,sans-serif; }
+    .shell { display:flex; gap:22px; min-height:100vh; padding:14px 16px; }
+    .sidebar,.content { border:1px solid rgba(255,255,255,.8); border-radius:7px; box-shadow:0 2px 8px rgba(48,70,92,.1); }
+    .sidebar { width:214px; flex:0 0 214px; padding:20px 14px 14px; background:rgba(244,247,251,.92); }
+    .sidebar-title { width:144px; margin:0 auto 24px; padding:7px 14px; border:1px solid #d2dce7; border-radius:999px; background:#e5ecf3; font-size:13px; font-weight:700; text-align:center; }
+    .nav { display:flex; flex-direction:column; gap:16px; }
+    .nav a { display:flex; align-items:center; gap:12px; min-height:66px; padding:12px 14px; border-radius:14px; background:var(--blue); color:var(--ink); text-decoration:none; font-size:14px; font-weight:700; transition:.2s ease; }
+    .nav a:hover,.nav a:focus-visible { transform:translateX(3px); background:#b9c8d8; outline:3px solid rgba(23,35,52,.18); outline-offset:2px; }
+    .dot { width:19px; height:19px; flex:none; border-radius:50%; }
+    .yellow { background:#f9ed5b; } .cyan { background:#3ddce8; } .purple { background:#a75bea; } .coral { background:#f56f78; }
+    .sidebar-footer { display:flex; align-items:center; gap:12px; margin-top:calc(100vh - 530px); color:#8291a0; }
+    .footer-mark { width:58px; height:56px; border:10px solid #abb5c0; border-right-color:#c1cad3; border-radius:45% 55% 50% 35%; transform:rotate(-19deg); }
+    .sidebar-footer small { font-size:11px; line-height:1.4; }
+    .content { flex:1; padding:41px 42px 34px; background:rgba(255,255,255,.92); }
+    .top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:31px; }
+    .eyebrow { margin:0 0 8px; color:#8b98a7; font-size:10px; font-weight:800; letter-spacing:.16em; }
+    h1 { margin:0; font-size:clamp(28px,3vw,39px); letter-spacing:-.04em; }
+    .actions { display:flex; gap:9px; }
+    .actions a { display:grid; place-items:center; width:37px; height:37px; border:1px solid #dde5ed; border-radius:10px; background:#f7f9fb; color:#718092; text-decoration:none; font-size:18px; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 44px; }
+    .card { min-height:205px; padding:30px 34px; border:1px solid var(--line); border-radius:28px; background:linear-gradient(145deg,#fff,#f8fafc); color:var(--ink); text-decoration:none; box-shadow:0 8px 20px rgba(123,146,168,.08); transition:.25s ease; }
+    .card:hover,.card:focus-visible { transform:translateY(-4px); border-color:#b9c9d9; box-shadow:0 13px 25px rgba(123,146,168,.16); outline:3px solid rgba(23,35,52,.12); outline-offset:2px; }
+    .label { display:flex; align-items:center; gap:17px; font-size:clamp(18px,2vw,25px); font-weight:700; letter-spacing:-.035em; }
+    .card p { max-width:245px; margin:22px 0 0 45px; color:var(--muted); font-size:13px; line-height:1.6; }
+    @media (max-width:760px) {
+      .shell { display:block; padding:10px; }
+      .sidebar { width:100%; margin-bottom:10px; }
+      .sidebar-footer { margin-top:24px; }
+      .content { padding:30px 20px; }
+      .top { padding-right:0; }
+      .actions { display:none; }
+      .grid { grid-template-columns:1fr; gap:16px; }
+      .card { min-height:165px; padding:24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <aside class="sidebar" aria-label="Navigation des fonctionnalités">
+      <div class="sidebar-title">Features</div>
+      <nav class="nav">
+        <a href="#feature-1"><span class="dot yellow" aria-hidden="true"></span>Feature 1</a>
+        <a href="#feature-2"><span class="dot cyan" aria-hidden="true"></span>Feature 2</a>
+        <a href="#feature-3"><span class="dot purple" aria-hidden="true"></span>Feature 3</a>
+        <a href="#feature-4"><span class="dot coral" aria-hidden="true"></span>Feature 4</a>
+      </nav>
+      <div class="sidebar-footer" aria-hidden="true">
+        <div class="footer-mark"></div>
+      </div>
+    </aside>
+    <section class="content" aria-labelledby="page-title">
+      <header class="top">
+        <div>
+          <p class="eyebrow">PRODUCT <span>/</span> OVERVIEW</p>
+          <h1 id="page-title">Product Features</h1>
+        </div>
+        <div class="actions" aria-label="Actions rapides">
+          <a href="#help" aria-label="Aide">?</a>
+          <a href="#settings" aria-label="Réglages">Settings</a>
+        </div>
+      </header>
+      <div class="grid">
+        <a class="card" id="feature-1" href="#feature-1">
+            <div class="label"><span class="dot large yellow" aria-hidden="true"></span>Feature 1</div>
+        </a>
+        <a class="card" id="feature-2" href="#feature-2">
+            <div class="label"><span class="dot large cyan" aria-hidden="true"></span>Feature 2</div>
+        </a>
+        <a class="card" id="feature-3" href="#feature-3">
+            <div class="label"><span class="dot large purple" aria-hidden="true"></span>Feature 3</div>
+        </a>
+        <a class="card" id="feature-4" href="#feature-4">
+            <div class="label"><span class="dot large coral" aria-hidden="true"></span>Feature 4</div>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
