@@ -1,7 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
+<head>
+  <meta charset="UTF-8" />
+  <title>WakeQuake - Team</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      background-color: #cbd5e1;
+      color: #1e293b;
+      min-width: 1200px;
+      margin: 0;
+      padding-top: 84px;
+      padding-bottom: 40px;
+    }
+
+    /* Fixed Full-Width Top Bar Following User Scroll */
+    .top-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      background-color: rgba(248, 250, 252, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #94a3b8;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .top-navbar-inner {
+      width: 1140px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+    }
+
+    /* Brand Logo / Wordmark on the Top Left */
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #1e293b;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      transition: color 0.15s ease;
+    }
+
+    .brand-title:hover {
+      color: #2563eb;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-item {
+      color: #334155;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-item:hover {
+      color: #2563eb;
+      background-color: #e2e8f0;
+    }
+
+    .nav-item.active {
+      color: #2563eb;
+      background-color: #e2e8f0;
+    }
+
+    /* Special Home Button (no emoji) */
+    .special-home-btn {
+      display: inline-flex;
+      align-items: center;
+      background-color: #e2e8f0;
+      border: 1px solid #94a3b8;
+      color: #1e293b;
+      font-weight: 800;
+    }
+
+    .special-home-btn:hover,
+    .special-home-btn.active {
+      background-color: #2563eb;
+      color: #ffffff !important;
+      border-color: #2563eb;
+    }
+
+    /* Canvas Frame matching the wireframe aspect */
+    .app-frame {
+      width: 1140px;
+      min-height: 780px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Top Window Dots (wireframe indicator top right) */
+    .window-controls {
+      position: absolute;
+      top: -20px;
+      right: 0;
+      display: flex;
+      gap: 6px;
+    }
+
+    .window-btn {
+      width: 18px;
+      height: 8px;
+      background-color: #e2e8f0;
+      border-radius: 2px;
+    }
+
+    /* Layout Wrapper */
+    .layout-wrapper {
+      width: 1140px;
+      display: flex;
+      gap: 25px;
+      margin-top: 10px;
+    }
+
+    /* Fixed Sidebar */
+    .sidebar {
+      width: 210px;
+      height: 650px;
+      background-color: #f1f5f9;
+      border-radius: 6px;
+      padding: 20px 14px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid #cbd5e1;
+    }
+
+    .sidebar-title-pill {
+      width: 140px;
+      height: 30px;
+      margin: 0 auto 24px auto;
+      background-color: #e2e8f0;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1e293b;
+      border: 1px solid #cbd5e1;
+    }
+
+    /* Sidebar Items: Non-clickable wireframe blocks */
+    .variety-item {
+      width: 182px;
+      height: 64px;
+      background-color: #cbd5e1;
+      border-radius: 12px;
+      margin-bottom: 22px;
+    }
+
+    /* Fixed Main Column */
+    .main-content {
+      width: 905px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    /* Team Card (same footprint as the Home hero card) */
+    .team-card-container {
+      width: 905px;
+      min-height: 650px;
+      background-color: #ffffff;
+      border-radius: 6px;
+      padding: 36px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+    }
+
+    .page-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 28px;
+    }
+
+    /* Team Grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .member-card {
+      background-color: #f8fafc;
+      border-radius: 8px;
+      padding: 24px 20px;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .avatar-pill {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: #e2e8f0;
+      border: 2px solid #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #2563eb;
+      margin-bottom: 14px;
+    }
+
+    .member-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 10px;
+    }
+
+    .member-id-pill {
+      display: inline-block;
+      padding: 4px 12px;
+      background-color: #e2e8f0;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+  </style>
+</head>
 <body>
+
+  <!-- Full-Width Sticky Top Navigation Bar Following Scroll -->
+  <header class="top-navbar">
+    <div class="top-navbar-inner">
+      <!-- Brand Logo linking to Home Page -->
+      <a href="index.html" class="brand-title">WakeQuake</a>
+
+      <!-- Navigation links: Special Home button (no emoji), Product Features, Pricing, Team (active) -->
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html" class="nav-item special-home-btn">Home</a>
+        <a href="features.html" class="nav-item">Product Features</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="team.html" class="nav-item active">Team</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="app-frame">
+    <!-- Top Right Decorative Controls from Blueprint -->
+    <div class="window-controls">
+      <div class="window-btn"></div>
+      <div class="window-btn"></div>
+      <div class="window-btn"></div>
+    </div>
+
+    <!-- Workspace Layout -->
+    <div class="layout-wrapper">
+
+      <!-- Fixed Sidebar with non-clickable buttons -->
+      <aside class="sidebar">
+        <div class="sidebar-title-pill">Team</div>
+
+        <div class="variety-item" style="margin-top: 14px;"></div>
+        <div class="variety-item"></div>
+        <div class="variety-item"></div>
+      </aside>
+
+      <!-- Fixed Main Column -->
+      <main class="main-content">
+        <section class="team-card-container">
+          <h1 class="page-title">Team Members</h1>
+
+          <div class="team-grid">
+            <div class="member-card">
+              <div class="avatar-pill">DI</div>
+              <h2 class="member-name">Dabady Illiodin</h2>
+              <span class="member-id-pill">ID: 300510720</span>
+            </div>
+
+            <div class="member-card">
+              <div class="avatar-pill">HK</div>
+              <h2 class="member-name">Hermann Kouonang Fipa</h2>
+              <span class="member-id-pill">ID: 300566236</span>
+            </div>
+
+            <div class="member-card">
+              <div class="avatar-pill">PO</div>
+              <h2 class="member-name">Princess Obeng Asante</h2>
+              <span class="member-id-pill">ID: 300553206</span>
+            </div>
+
+            <div class="member-card">
+              <div class="avatar-pill">SH</div>
+              <h2 class="member-name">Sophie Hanson</h2>
+              <span class="member-id-pill">ID: 300357850</span>
+            </div>
+
+            <div class="member-card">
+              <div class="avatar-pill">YN</div>
+              <h2 class="member-name">Yuriy Neyra Alvarado</h2>
+              <span class="member-id-pill">ID: 300527587</span>
+            </div>
+
+            <div class="member-card">
+              <div class="avatar-pill">ZS</div>
+              <h2 class="member-name">Zoe Sura Ortega</h2>
+              <span class="member-id-pill">ID: 300518014</span>
+            </div>
+          </div>
+        </section>
+      </main>
+
+    </div>
+  </div>
 
 </body>
 </html>
