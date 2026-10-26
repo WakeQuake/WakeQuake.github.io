@@ -190,6 +190,86 @@
       color: #0f172a;
       margin-bottom: 20px;
     }
+    .dot {
+      width: 19px;
+      height: 19px;
+      flex: none;
+      border-radius: 50%;
+    }
+
+    .yellow { background-color: #f9ed5b; }
+    .cyan { background-color: #3ddce8; }
+    .purple { background-color: #a75bea; }
+    .coral { background-color: #f56f78; }
+
+    /* Sidebar buttons */
+    .fnav {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .fnav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 64px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background-color: #cbd5e1;
+      color: #1e293b;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .fnav a:hover,
+    .fnav a:focus-visible {
+      transform: translateX(3px);
+      background-color: #b9c8d8;
+      outline: 3px solid rgba(23, 35, 52, 0.18);
+      outline-offset: 2px;
+    }
+
+    /* 2x2 cards */
+    .fgrid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px 28px;
+    }
+
+    .fcard {
+      min-height: 205px;
+      padding: 30px 34px;
+      border: 1px solid #d6e0e9;
+      border-radius: 28px;
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      color: #172334;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(123, 146, 168, 0.08);
+      transition: all 0.25s ease;
+      scroll-margin-top: 84px;
+    }
+
+    .fcard:hover,
+    .fcard:focus-visible {
+      transform: translateY(-4px);
+      border-color: #b9c9d9;
+      box-shadow: 0 13px 25px rgba(123, 146, 168, 0.16);
+      outline: 3px solid rgba(23, 35, 52, 0.12);
+      outline-offset: 2px;
+    }
+
+    .flabel {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
   </style>
 </head>
 <body>
@@ -220,12 +300,35 @@
         <div class="variety-item" style="margin-top: 14px;"></div>
         <div class="variety-item"></div>
         <div class="variety-item"></div>
+        <!--3 grey placeholder blocks -->
+        <nav class="fnav" aria-label="Features">
+          <a href="#feature-1"><span class="dot yellow" aria-hidden="true"></span>Feature 1</a>
+          <a href="#feature-2"><span class="dot cyan" aria-hidden="true"></span>Feature 2</a>
+          <a href="#feature-3"><span class="dot purple" aria-hidden="true"></span>Feature 3</a>
+          <a href="#feature-4"><span class="dot coral" aria-hidden="true"></span>Feature 4</a>
+        </nav>
       </aside>
 
       <!-- Main content-->
       <main class="main-content">
         <section class="features-card">
           <h1 class="page-title">Product Features</h1>
+          
+          <!-- 4 mockup cards -->
+          <div class="fgrid">
+            <a class="fcard" id="feature-1" href="#feature-1">
+              <div class="flabel"><span class="dot yellow" aria-hidden="true"></span>Feature 1</div>
+            </a>
+            <a class="fcard" id="feature-2" href="#feature-2">
+              <div class="flabel"><span class="dot cyan" aria-hidden="true"></span>Feature 2</div>
+            </a>
+            <a class="fcard" id="feature-3" href="#feature-3">
+              <div class="flabel"><span class="dot purple" aria-hidden="true"></span>Feature 3</div>
+            </a>
+            <a class="fcard" id="feature-4" href="#feature-4">
+              <div class="flabel"><span class="dot coral" aria-hidden="true"></span>Feature 4</div>
+            </a>
+          </div>
         </section>
       </main>
 
