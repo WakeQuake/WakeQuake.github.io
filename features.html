@@ -115,6 +115,14 @@
       margin: 0 auto;
       position: relative;
     }
+    /* three decorative dashes (top right) */
+    .window-controls {
+      position: absolute;
+      top: -20px;
+      right: 0;
+      display: flex;
+      gap: 6px;
+    }
 
     .window-btn {
       width: 18px;
@@ -288,6 +296,14 @@
       </nav>
     </div>
   </header>
+
+  <div class="app-frame">
+    <!-- ADDED: Top decorative window controls (the three dashes) -->
+    <div class="window-controls">
+      <div class="window-btn"></div>
+      <div class="window-btn"></div>
+      <div class="window-btn"></div>
+    </div>
 
   <div class="app-frame">
     <!-- Layout -->
