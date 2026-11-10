@@ -40,24 +40,24 @@
     <!-- Workspace Layout -->
     <div class="layout-wrapper">
 
-      <!-- Fixed Sidebar -->
+      <!-- Sidebar: each variety jumps to its pricing tier -->
       <aside class="sidebar">
         <div class="sidebar-title-pill">Pricing</div>
 
-        <div class="sidebar-list">
-          <div class="variety-item">
-            <img class="variety-thumb" src="mockups/image1.png" alt="WakeQuake Classic finish" />
-            <span class="variety-label">Classic</span>
-          </div>
-          <div class="variety-item">
-            <img class="variety-thumb" src="mockups/image3.png" alt="WakeQuake Horizon finish" />
-            <span class="variety-label">Horizon</span>
-          </div>
-          <div class="variety-item">
-            <img class="variety-thumb" src="mockups/image4.png" alt="WakeQuake Deluxe finish" />
-            <span class="variety-label">Deluxe</span>
-          </div>
-        </div>
+        <nav class="sidebar-list" aria-label="Pricing tiers">
+          <a class="variety-item" href="#tier-student">
+            <img class="variety-thumb" src="mockups/image1.png" alt="" />
+            <span class="variety-label">Classic · $49</span>
+          </a>
+          <a class="variety-item" href="#tier-pro">
+            <img class="variety-thumb" src="mockups/image3.png" alt="" />
+            <span class="variety-label">Horizon · $89</span>
+          </a>
+          <a class="variety-item" href="#tier-deluxe">
+            <img class="variety-thumb" src="mockups/image4.png" alt="" />
+            <span class="variety-label">Deluxe · $139</span>
+          </a>
+        </nav>
       </aside>
 
       <!-- Fixed Main Column -->
@@ -67,7 +67,7 @@
 
           <!-- Pricing grid with product imagery and feature lists -->
           <div class="pricing-grid">
-            <div class="pricing-card">
+            <div class="pricing-card" id="tier-student">
               <div>
                 <img class="tier-image" src="mockups/image1.png" alt="WakeQuake Classic finish" />
                 <h2 class="tier-name">Student Edition</h2>
@@ -86,7 +86,7 @@
               <a href="#" class="tier-btn">Select</a>
             </div>
 
-            <div class="pricing-card featured">
+            <div class="pricing-card featured" id="tier-pro">
               <span class="pricing-ribbon">Most Popular</span>
               <div>
                 <img class="tier-image" src="mockups/image3.png" alt="WakeQuake Horizon finish" />
@@ -106,7 +106,7 @@
               <a href="#" class="tier-btn">Select</a>
             </div>
 
-            <div class="pricing-card">
+            <div class="pricing-card" id="tier-deluxe">
               <div>
                 <img class="tier-image" src="mockups/image4.png" alt="WakeQuake Deluxe finish" />
                 <h2 class="tier-name">Vision Deluxe</h2>
