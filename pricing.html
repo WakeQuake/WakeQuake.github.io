@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WakeQuake - Pricing</title>
   <link rel="stylesheet" href="styles.css"/>
 </head>
@@ -13,8 +14,13 @@
       <!-- Brand Logo linking to Home Page -->
       <a href="index.html" class="brand-title">WakeQuake</a>
 
+      <!-- Mobile nav toggle -->
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+        <span class="nav-toggle-bar"></span>
+      </button>
+
       <!-- Navigation links: Special Home button (no emoji), Product Features, Pricing (active), Team -->
-      <nav class="nav-links" aria-label="Main navigation">
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
         <a href="index.html" class="nav-item special-home-btn">Home</a>
         <a href="features.html" class="nav-item">Product Features</a>
         <a href="pricing.html" class="nav-item active">Pricing</a>
@@ -33,52 +39,88 @@
 
     <!-- Workspace Layout -->
     <div class="layout-wrapper">
-      
+
       <!-- Fixed Sidebar -->
       <aside class="sidebar">
         <div class="sidebar-title-pill">Pricing</div>
-        
-        <div class="variety-item" style="margin-top: 14px;"></div>
-        <div class="variety-item"></div>
-        <div class="variety-item"></div>
+
+        <div class="sidebar-list">
+          <div class="variety-item">
+            <img class="variety-thumb" src="mockups/image1.png" alt="WakeQuake Classic finish" />
+            <span class="variety-label">Classic</span>
+          </div>
+          <div class="variety-item">
+            <img class="variety-thumb" src="mockups/image3.png" alt="WakeQuake Horizon finish" />
+            <span class="variety-label">Horizon</span>
+          </div>
+          <div class="variety-item">
+            <img class="variety-thumb" src="mockups/image4.png" alt="WakeQuake Deluxe finish" />
+            <span class="variety-label">Deluxe</span>
+          </div>
+        </div>
       </aside>
 
       <!-- Fixed Main Column -->
       <main class="main-content">
-        <section class="pricing-card-container">
+        <section class="page-card">
           <h1 class="page-title">Pricing</h1>
 
-          <!-- Clean Pricing Grid without filler features, guarantees, or discount boxes -->
+          <!-- Pricing grid with product imagery and feature lists -->
           <div class="pricing-grid">
             <div class="pricing-card">
               <div>
+                <img class="tier-image" src="mockups/image1.png" alt="WakeQuake Classic finish" />
                 <h2 class="tier-name">Student Edition</h2>
                 <div class="tier-price-box">
                   <span class="tier-price">$49</span>
                   <span class="tier-period">CAD</span>
                 </div>
+                <p class="tier-audience">For light sleepers who just need a nudge.</p>
+                <ul class="tier-features">
+                  <li>Riddle &amp; puzzle challenges</li>
+                  <li>Step-counter snooze</li>
+                  <li>Classic finish</li>
+                  <li>6-month warranty</li>
+                </ul>
               </div>
               <a href="#" class="tier-btn">Select</a>
             </div>
 
-            <div class="pricing-card">
+            <div class="pricing-card featured">
+              <span class="pricing-ribbon">Most Popular</span>
               <div>
+                <img class="tier-image" src="mockups/image3.png" alt="WakeQuake Horizon finish" />
                 <h2 class="tier-name">Pro Edition</h2>
                 <div class="tier-price-box">
                   <span class="tier-price">$89</span>
                   <span class="tier-period">CAD</span>
                 </div>
+                <p class="tier-audience">For deep sleepers and serial snoozers.</p>
+                <ul class="tier-features">
+                  <li>Everything in Student</li>
+                  <li>AI object &amp; math challenges</li>
+                  <li>Ambient light ring</li>
+                  <li>1-year warranty</li>
+                </ul>
               </div>
               <a href="#" class="tier-btn">Select</a>
             </div>
 
             <div class="pricing-card">
               <div>
+                <img class="tier-image" src="mockups/image4.png" alt="WakeQuake Deluxe finish" />
                 <h2 class="tier-name">Vision Deluxe</h2>
                 <div class="tier-price-box">
                   <span class="tier-price">$139</span>
                   <span class="tier-period">CAD</span>
                 </div>
+                <p class="tier-audience">For households that refuse to be late, ever.</p>
+                <ul class="tier-features">
+                  <li>Everything in Pro</li>
+                  <li>Premium anodized finish</li>
+                  <li>Priority support</li>
+                  <li>2-year warranty</li>
+                </ul>
               </div>
               <a href="#" class="tier-btn">Select</a>
             </div>
@@ -89,5 +131,6 @@
     </div>
   </div>
 
+  <script src="app.js"></script>
 </body>
 </html>

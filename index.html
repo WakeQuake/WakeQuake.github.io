@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>WakeQuake</title>
-<link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WakeQuake — Smart Alarm Clock</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
@@ -13,8 +14,13 @@
       <!-- Brand Logo linking to Home Page -->
       <a href="index.html" class="brand-title">WakeQuake</a>
 
+      <!-- Mobile nav toggle -->
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+        <span class="nav-toggle-bar"></span>
+      </button>
+
       <!-- Navigation links: Special Home button (no emoji), Product Features, Pricing, Team -->
-      <nav class="nav-links" aria-label="Main navigation">
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
         <a href="index.html" class="nav-item special-home-btn active">Home</a>
         <a href="features.html" class="nav-item">Product Features</a>
         <a href="pricing.html" class="nav-item">Pricing</a>
@@ -33,30 +39,125 @@
 
     <!-- Workspace Layout -->
     <div class="layout-wrapper">
-      
+
       <!-- Fixed Sidebar with non-clickable buttons -->
       <aside class="sidebar">
         <div class="sidebar-title-pill">Our varieties</div>
-        
-        <div class="variety-item" style="margin-top: 14px;"></div>
-        <div class="variety-item"></div>
-        <div class="variety-item"></div>
+
+        <div class="sidebar-list">
+          <div class="variety-item">
+            <img class="variety-thumb" src="mockups/image1.png" alt="WakeQuake Classic finish" />
+            <span class="variety-label">Classic</span>
+          </div>
+          <div class="variety-item">
+            <img class="variety-thumb" src="mockups/image3.png" alt="WakeQuake Horizon finish" />
+            <span class="variety-label">Horizon</span>
+          </div>
+          <div class="variety-item">
+            <img class="variety-thumb" src="mockups/image4.png" alt="WakeQuake Deluxe finish" />
+            <span class="variety-label">Deluxe</span>
+          </div>
+        </div>
       </aside>
 
       <!-- Fixed Main Column -->
       <main class="main-content">
         <section class="hero-card">
-          <img class="hero-image" src="https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&q=80&w=800" alt="Smart alarm" />
+
+          <!-- Product image gallery -->
+          <div class="product-gallery">
+            <div class="gallery-main">
+              <img class="hero-image" id="heroImage" src="mockups/image3.png" alt="WakeQuake smart alarm clock, Horizon finish" />
+            </div>
+            <div class="gallery-thumbs" id="galleryThumbs">
+              <button type="button" class="gallery-thumb active" data-image="mockups/image3.png" data-alt="WakeQuake smart alarm clock, Horizon finish" aria-label="View Horizon finish">
+                <img src="mockups/image3.png" alt="" />
+              </button>
+              <button type="button" class="gallery-thumb" data-image="mockups/image1.png" data-alt="WakeQuake smart alarm clock, Classic finish" aria-label="View Classic finish">
+                <img src="mockups/image1.png" alt="" />
+              </button>
+              <button type="button" class="gallery-thumb" data-image="mockups/image2.png" data-alt="WakeQuake smart alarm clock, Active finish" aria-label="View Active finish">
+                <img src="mockups/image2.png" alt="" />
+              </button>
+              <button type="button" class="gallery-thumb" data-image="mockups/image4.png" data-alt="WakeQuake smart alarm clock, Deluxe finish" aria-label="View Deluxe finish">
+                <img src="mockups/image4.png" alt="" />
+              </button>
+            </div>
+          </div>
+
+          <!-- Product info -->
+          <div class="product-info">
+            <h1 class="product-title">WakeQuake Smart Alarm Clock</h1>
+            <p class="product-tagline">AI puzzle &amp; object-recognition alarm that won't quit until you're actually awake.</p>
+
+            <div class="rating-row">
+              <span class="stars" aria-hidden="true">★★★★★</span>
+              <span class="rating-count">4.8 · 1,248 ratings</span>
+            </div>
+
+            <div class="price-row">
+              <span class="price-now">$89.00 CAD</span>
+              <span class="price-old">$119.00</span>
+              <span class="price-save">Save 25%</span>
+            </div>
+
+            <div class="badge-row">
+              <span class="badge accent">No Wi-Fi Required</span>
+              <span class="badge">Free 2-Day Shipping</span>
+              <span class="badge">1-Year Warranty</span>
+              <span class="badge">30-Day Returns</span>
+            </div>
+
+            <ul class="bullet-list">
+              <li><strong>AI-powered challenges</strong> — riddles, math, and geography questions stand between you and silence.</li>
+              <li><strong>Camera object recognition</strong> — snap a photo of a real object to prove you're out of bed.</li>
+              <li><strong>100% offline &amp; private</strong> — no cloud, no account, no subscription, ever.</li>
+              <li><strong>4 premium finishes</strong> — Classic, Active, Horizon, and Deluxe.</li>
+            </ul>
+
+            <div class="cta-row">
+              <a href="pricing.html" class="btn-primary">Add to Cart</a>
+              <a href="pricing.html" class="btn-secondary">Buy Now</a>
+            </div>
+          </div>
+
         </section>
 
-        <section class="features-card">
-          <div class="features-title">Features</div>
-          <p class="features-text">Smart digital alarm with rotating projector, automatic synchronization, and built-in fast loading interface.</p>
+        <section class="summary-card">
+          <div class="summary-title">Join thousands who stopped oversleeping</div>
+          <p class="summary-text">WakeQuake was built by students, for anyone who can't afford to hit snooze. Every alarm is a small challenge your brain has to finish before the room goes quiet again.</p>
+        </section>
+
+        <section class="page-card">
+          <h2 class="page-title">Why WakeQuake</h2>
+          <div class="highlights-grid">
+            <div class="highlight-item">
+              <span class="dot yellow" aria-hidden="true"></span>
+              <div class="highlight-title">Never snooze again</div>
+              <p class="highlight-text">Challenges force your brain to fully switch on before the alarm will stop.</p>
+            </div>
+            <div class="highlight-item">
+              <span class="dot cyan" aria-hidden="true"></span>
+              <div class="highlight-title">Works anywhere</div>
+              <p class="highlight-text">Fully offline — no Wi-Fi, no account, and no subscription required.</p>
+            </div>
+            <div class="highlight-item">
+              <span class="dot purple" aria-hidden="true"></span>
+              <div class="highlight-title">Built to last</div>
+              <p class="highlight-text">Anodized aluminum shell available in four finishes to match any room.</p>
+            </div>
+            <div class="highlight-item">
+              <span class="dot coral" aria-hidden="true"></span>
+              <div class="highlight-title">Loved by students</div>
+              <p class="highlight-text">Designed with — and for — students who can't afford to oversleep.</p>
+            </div>
+          </div>
         </section>
       </main>
 
     </div>
   </div>
 
+  <script src="app.js"></script>
 </body>
 </html>

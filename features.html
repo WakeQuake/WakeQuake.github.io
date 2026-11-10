@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WakeQuake - Product Features</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -12,8 +13,13 @@
       <!-- Name linking to index.html -->
       <a href="index.html" class="brand-title">WakeQuake</a>
 
+      <!-- Mobile nav toggle -->
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+        <span class="nav-toggle-bar"></span>
+      </button>
+
       <!-- Navigation links: Home, Product Features (active), Pricing, Team -->
-      <nav class="nav-links" aria-label="Main navigation">
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
         <a href="index.html" class="nav-item special-home-btn">Home</a>
         <a href="features.html" class="nav-item active">Product Features</a>
         <a href="pricing.html" class="nav-item">Pricing</a>
@@ -33,38 +39,48 @@
 
     <!-- Layout -->
     <div class="layout-wrapper">
-      
+
       <!-- Sidebar -->
       <aside class="sidebar">
         <div class="sidebar-title-pill">Features</div>
-        
-        <!--3 grey placeholder blocks -->
+
         <nav class="fnav" aria-label="Features">
-          <a href="#feature-1"><span class="dot yellow" aria-hidden="true"></span>Feature 1</a>
-          <a href="#feature-2"><span class="dot cyan" aria-hidden="true"></span>Feature 2</a>
-          <a href="#feature-3"><span class="dot purple" aria-hidden="true"></span>Feature 3</a>
-          <a href="#feature-4"><span class="dot coral" aria-hidden="true"></span>Feature 4</a>
+          <a href="#feature-1"><span class="dot yellow" aria-hidden="true"></span>Challenge Engine</a>
+          <a href="#feature-2"><span class="dot cyan" aria-hidden="true"></span>AI Recognition</a>
+          <a href="#feature-3"><span class="dot purple" aria-hidden="true"></span>Ambient Glow</a>
+          <a href="#feature-4"><span class="dot coral" aria-hidden="true"></span>Finishes</a>
         </nav>
       </aside>
 
       <!-- Main content-->
       <main class="main-content">
-        <section class="features-card">
+        <section class="page-card">
           <h1 class="page-title">Product Features</h1>
-          
-          <!-- 4 mockup cards -->
+
+          <!-- 4 feature cards with mockup imagery -->
           <div class="fgrid">
             <a class="fcard" id="feature-1" href="#feature-1">
-              <div class="flabel"><span class="dot yellow" aria-hidden="true"></span>Feature 1</div>
+              <img class="fcard-image" src="mockups/image1.png" alt="WakeQuake Classic finish showing a puzzle and object-photo challenge" />
+              <div class="flabel"><span class="dot yellow" aria-hidden="true"></span>Riddles, Puzzles &amp; Real Challenges</div>
+              <p class="fcard-text">Every snooze triggers a new riddle, shape puzzle, or geography quiz. WakeQuake won't go quiet until your brain is actually switched on.</p>
             </a>
+
             <a class="fcard" id="feature-2" href="#feature-2">
-              <div class="flabel"><span class="dot cyan" aria-hidden="true"></span>Feature 2</div>
+              <img class="fcard-image" src="mockups/image2.png" alt="WakeQuake Active finish showing a math and object-scan challenge" />
+              <div class="flabel"><span class="dot cyan" aria-hidden="true"></span>AI That Actually Checks</div>
+              <p class="fcard-text">Solve a math equation, repeat a number sequence, or scan a specific object with the built-in camera — WakeQuake verifies you're really awake before it stops.</p>
             </a>
+
             <a class="fcard" id="feature-3" href="#feature-3">
-              <div class="flabel"><span class="dot purple" aria-hidden="true"></span>Feature 3</div>
+              <img class="fcard-image" src="mockups/image3.png" alt="WakeQuake Horizon finish with ambient light ring" />
+              <div class="flabel"><span class="dot purple" aria-hidden="true"></span>Designed to Wake You Gently First</div>
+              <p class="fcard-text">A soft rotating light ring builds gradually before the alarm sounds, while the anodized aluminum body looks as good on your nightstand as it sounds in the morning.</p>
             </a>
+
             <a class="fcard" id="feature-4" href="#feature-4">
-              <div class="flabel"><span class="dot coral" aria-hidden="true"></span>Feature 4</div>
+              <img class="fcard-image" src="mockups/image4.png" alt="WakeQuake Deluxe finish in deep purple" />
+              <div class="flabel"><span class="dot coral" aria-hidden="true"></span>4 Finishes, One Mission</div>
+              <p class="fcard-text">From the playful Classic to the deep-toned Deluxe, every WakeQuake finish shares the same mission: get you out of bed, every single time.</p>
             </a>
           </div>
         </section>
@@ -72,5 +88,7 @@
 
     </div>
   </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
