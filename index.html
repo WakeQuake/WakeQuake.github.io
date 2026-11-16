@@ -6,10 +6,10 @@
   <title>WakeQuake — Smart Alarm Clock</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="home-page">
 
   <!-- Full-Width Sticky Top Navigation Bar Following Scroll -->
-  <header class="top-navbar">
+  <header class="top-navbar navbar-scroll-reveal" id="topNavbar">
     <div class="top-navbar-inner">
       <!-- Brand Logo linking to Home Page -->
       <a href="index.html" class="brand-title">WakeQuake</a>
@@ -28,6 +28,13 @@
       </nav>
     </div>
   </header>
+
+  <section class="full-hero-banner" aria-label="WakeQuake Hero">
+    <img class="full-hero-bg" src="Gemini_Generated_Image_z4e1fz4e1fz4e1fz.jpg" alt="WakeQuake Smart Alarm Clock" />
+    <div class="full-hero-overlay">
+      <h1 class="full-hero-title">WakeQuake</h1>
+    </div>
+  </section>
 
   <div class="app-frame">
     <!-- Top Right Decorative Controls from Blueprint -->
@@ -65,71 +72,42 @@
             </div>
           </div>
 
-          <!-- Product info -->
-          <div class="product-info">
-            <h1 class="product-title">WakeQuake Smart Alarm Clock</h1>
-            <p class="product-tagline">AI puzzle &amp; object-recognition alarm that won't quit until you're actually awake.</p>
-
-            <div class="rating-row">
-              <span class="stars" aria-hidden="true">★★★★★</span>
-              <span class="rating-count">4.8 · 1,248 ratings</span>
-            </div>
-
-            <div class="price-row">
-              <span class="price-now">$89.00 CAD</span>
-              <span class="price-old">$119.00</span>
-              <span class="price-save">Save 25%</span>
-            </div>
-
-            <div class="badge-row">
-              <span class="badge accent">No Wi-Fi Required</span>
-              <span class="badge">Free 2-Day Shipping</span>
-              <span class="badge">1-Year Warranty</span>
-              <span class="badge">30-Day Returns</span>
-            </div>
-
-            <ul class="bullet-list">
-              <li><strong>AI-powered challenges</strong> — riddles, math, and geography questions stand between you and silence.</li>
-              <li><strong>Camera object recognition</strong> — snap a photo of a real object to prove you're out of bed.</li>
-              <li><strong>100% offline &amp; private</strong> — no cloud, no account, no subscription, ever.</li>
-              <li><strong>4 premium finishes</strong> — Classic, Active, Horizon, and Deluxe.</li>
-            </ul>
-
-            <div class="cta-row">
-              <a href="pricing.html" class="btn-primary">Add to Cart</a>
-              <a href="pricing.html" class="btn-secondary">Buy Now</a>
-            </div>
+          <div class="hero-filler-info" id="heroFillerInfo">
+            <h2 class="hero-filler-heading">Filler heading</h2>
+            <p class="hero-filler-body">
+              filler body, please fix this tghwrogrwhjfioekfowghiorjgwrioghowrijfweiocnorighwroighowri
+            </p>
           </div>
 
         </section>
 
         <section class="summary-card">
-          <div class="summary-title">Join thousands who stopped oversleeping</div>
-          <p class="summary-text">WakeQuake was built by students, for anyone who can't afford to hit snooze. Every alarm is a small challenge your brain has to finish before the room goes quiet again.</p>
+          <div class="summary-title">filler title</div>
+          <p class="summary-text">filler text replace pls</p>
         </section>
 
         <section class="page-card">
-          <h2 class="page-title">Why WakeQuake</h2>
+          <h2 class="page-title">filler title</h2>
           <div class="highlights-grid">
             <div class="highlight-item">
               <span class="dot yellow" aria-hidden="true"></span>
-              <div class="highlight-title">Never snooze again</div>
-              <p class="highlight-text">Challenges force your brain to fully switch on before the alarm will stop.</p>
+              <div class="highlight-title">filler title</div>
+              <p class="highlight-text">filler text replace pls</p>
             </div>
             <div class="highlight-item">
               <span class="dot cyan" aria-hidden="true"></span>
-              <div class="highlight-title">Works anywhere</div>
-              <p class="highlight-text">Fully offline — no Wi-Fi, no account, and no subscription required.</p>
+              <div class="highlight-title">filler title</div>
+              <p class="highlight-text">filler text replace pls</p>
             </div>
             <div class="highlight-item">
               <span class="dot purple" aria-hidden="true"></span>
-              <div class="highlight-title">Built to last</div>
-              <p class="highlight-text">Anodized aluminum shell available in four finishes to match any room.</p>
+              <div class="highlight-title">filler title</div>
+              <p class="highlight-text">filler text replace pls</p>
             </div>
             <div class="highlight-item">
               <span class="dot coral" aria-hidden="true"></span>
-              <div class="highlight-title">Loved by students</div>
-              <p class="highlight-text">Designed with — and for — students who can't afford to oversleep.</p>
+              <div class="highlight-title">filler title</div>
+              <p class="highlight-text">filler text replace pls</p>
             </div>
           </div>
         </section>
@@ -139,5 +117,34 @@
   </div>
 
   <script src="app.js"></script>
+  <script>
+    (function () {
+      const navbar = document.getElementById('topNavbar');
+      if (!navbar) return;
+      const toggleNavbar = () => {
+        navbar.classList.toggle('is-visible', window.scrollY > 40);
+      };
+      window.addEventListener('scroll', toggleNavbar, { passive: true });
+      toggleNavbar();
+
+      const fillerInfo = document.getElementById('heroFillerInfo');
+      if (fillerInfo && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                fillerInfo.classList.add('is-visible');
+                observer.unobserve(fillerInfo);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+        observer.observe(fillerInfo);
+      } else if (fillerInfo) {
+        fillerInfo.classList.add('is-visible');
+      }
+    })();
+  </script>
 </body>
 </html>
