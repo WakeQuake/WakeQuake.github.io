@@ -79,6 +79,7 @@
 
 
             </p>
+            <a href="features.html" class="hero-filler-btn" id="heroFeaturesBtn">View product features</a>
           </div>
 
         </section>
@@ -109,6 +110,13 @@
     </div>
   </div>
 
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <a href="team.html" class="footer-about-btn">About Us</a>
+      <span class="footer-copyright">&copy; WakeQuake Team 2026</span>
+    </div>
+  </footer>
+
   <script src="app.js"></script>
   <script>
     (function () {
@@ -136,6 +144,17 @@
         observer.observe(fillerInfo);
       } else if (fillerInfo) {
         fillerInfo.classList.add('is-visible');
+      }
+
+      const featuresBtn = document.getElementById('heroFeaturesBtn');
+      if (featuresBtn) {
+        featuresBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.body.classList.add('page-fade-out');
+          setTimeout(() => {
+            window.location.href = featuresBtn.getAttribute('href');
+          }, 100);
+        });
       }
     })();
   </script>

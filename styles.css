@@ -1350,3 +1350,75 @@ body.home-page {
   line-height: 1.65;
   color: var(--text-secondary, #4b5563);
 }
+
+img.avatar-pill {
+  object-fit: cover;
+}
+
+.hero-filler-btn {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background-color: var(--accent-primary);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid var(--accent-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+.hero-filler-btn:hover {
+  background-color: #ffffff;
+  color: var(--accent-primary);
+}
+
+body.page-fade-out {
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.site-footer {
+  width: 100%;
+  padding: 24px 32px;
+  margin-top: 32px;
+  border-top: 1px solid var(--border-subtle, #e5e7eb);
+  background-color: var(--bg-surface, #ffffff);
+}
+
+.site-footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-about-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background-color: var(--accent-primary);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 1px solid var(--accent-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.footer-about-btn:hover {
+  background-color: #ffffff;
+  color: var(--accent-primary);
+}
+
+.footer-copyright {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #4b5563);
+}
