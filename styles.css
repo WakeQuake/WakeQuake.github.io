@@ -889,11 +889,6 @@ img {
   text-align: center;
 }
 
-.pricing-card.featured {
-  border-color: var(--accent-primary);
-  box-shadow: var(--shadow-card-hover);
-}
-
 .pricing-ribbon {
   position: absolute;
   top: -12px;
@@ -1384,7 +1379,7 @@ body.page-fade-out {
 .site-footer {
   width: 100%;
   padding: 24px 32px;
-  margin-top: 32px;
+  margin-top: 5px;
   border-top: 1px solid var(--border-subtle, #e5e7eb);
   background-color: var(--bg-surface, #ffffff);
 }
@@ -1419,6 +1414,7 @@ body.page-fade-out {
 }
 
 .footer-copyright {
+  margin-left: auto;
   font-size: 0.9rem;
   color: var(--text-secondary, #4b5563);
 }
