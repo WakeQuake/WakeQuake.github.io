@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WakeQuake — Smart Alarm Clock</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2" />
 </head>
 <body class="home-page">
 
@@ -30,19 +30,13 @@
   </header>
 
   <section class="full-hero-banner" aria-label="WakeQuake Hero">
-    <img class="full-hero-bg" src="Gemini_Generated_Image_z4e1fz4e1fz4e1fz.jpg" alt="WakeQuake Smart Alarm Clock" />
+    <img class="full-hero-bg" src="homepagephoto.jpg" alt="WakeQuake Smart Alarm Clock" />
     <div class="full-hero-overlay">
       <h1 class="full-hero-title">WakeQuake</h1>
     </div>
   </section>
 
   <div class="app-frame">
-    <!-- Top Right Decorative Controls from Blueprint -->
-    <div class="window-controls">
-      <div class="window-btn"></div>
-      <div class="window-btn"></div>
-      <div class="window-btn"></div>
-    </div>
 
     <!-- Workspace Layout -->
     <div class="layout-wrapper">
@@ -54,11 +48,11 @@
           <!-- Product image gallery -->
           <div class="product-gallery">
             <div class="gallery-main">
-              <img class="hero-image" id="heroImage" src="mockups/image3.png" alt="WakeQuake smart alarm clock, Horizon finish" />
+              <img class="hero-image" id="heroImage" src="mockups/image_purple.jpg" alt="WakeQuake smart alarm clock, Horizon finish" />
             </div>
             <div class="gallery-thumbs" id="galleryThumbs">
-              <button type="button" class="gallery-thumb active" data-image="mockups/image3.png" data-alt="WakeQuake smart alarm clock, Horizon finish" aria-label="View Horizon finish">
-                <img src="mockups/image3.png" alt="" />
+              <button type="button" class="gallery-thumb active" data-image="mockups/image_purple.jpg" data-alt="WakeQuake smart alarm clock, Horizon finish" aria-label="View Horizon finish">
+                <img src="mockups/image_purple.jpg" alt="" />
               </button>
               <button type="button" class="gallery-thumb" data-image="mockups/image1.png" data-alt="WakeQuake smart alarm clock, Classic finish" aria-label="View Classic finish">
                 <img src="mockups/image1.png" alt="" />
@@ -73,10 +67,13 @@
           </div>
 
           <div class="hero-filler-info" id="heroFillerInfo">
-            <h2 class="hero-filler-heading">Filler heading</h2>
+            <h2 class="hero-filler-heading">Wake Quake</h2>
             <p class="hero-filler-body">
-              filler body, please fix this tghwrogrwhjfioekfowghiorjgwrioghowrijfweiocnorighwroighowri
+              Wake Quake is the ultimate morning shake-up. Whether you are an early bird or simply a student that needs to wake up early, Wake Quake will make sure that you don't miss your important schedule. From the first morning snooze, it will challenge your will to stay in bed by giving you simple riddles, geography quizzes or math equations. If you don't complete the tasks, this machine will make you wake quick!
+
+
             </p>
+            <a href="features.html" class="hero-filler-btn" id="heroFeaturesBtn">View product features</a>
           </div>
 
         </section>
@@ -88,27 +85,23 @@
             <p class="summary-text">filler text replace pls</p>
           </div>
 
-          <h2 class="page-title">filler title</h2>
+          <h2 class="page-title">Why choose WakeQuake?</h2>
           <div class="highlights-grid">
             <div class="highlight-item">
-              <span class="dot yellow" aria-hidden="true"></span>
-              <div class="highlight-title">filler title</div>
-              <p class="highlight-text">filler text replace pls</p>
+              <div class="highlight-title">Brain & Body Engagement</div>
+              <p class="highlight-text">Forces your brain out of "autopilot snooze mode" by making you solve puzzles or scan specific household objects.</p>
             </div>
             <div class="highlight-item">
-              <span class="dot cyan" aria-hidden="true"></span>
-              <div class="highlight-title">filler title</div>
-              <p class="highlight-text">filler text replace pls</p>
+              <div class="highlight-title">Made for Heavy Sleepers</div>
+              <p class="highlight-text">Designed specifically for heavy sleepers who easily sleep through traditional alarms.</p>
             </div>
             <div class="highlight-item">
-              <span class="dot purple" aria-hidden="true"></span>
-              <div class="highlight-title">filler title</div>
-              <p class="highlight-text">filler text replace pls</p>
+              <div class="highlight-title">Tailored to You</div>
+              <p class="highlight-text">Choose your own challenge style and difficulty level, from simple math to geography trivia or physical tasks.</p>
             </div>
             <div class="highlight-item">
-              <span class="dot coral" aria-hidden="true"></span>
-              <div class="highlight-title">filler title</div>
-              <p class="highlight-text">filler text replace pls</p>
+              <div class="highlight-title">Un-Cheatable Design</div>
+              <p class="highlight-text">Built with a tamper-proof backup battery and a persistent alarm so you can't just unplug it or swipe it off in your sleep.</p>
             </div>
           </div>
         </section>
@@ -116,6 +109,13 @@
 
     </div>
   </div>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <a href="team.html" class="footer-about-btn">About Us</a>
+      <span class="footer-copyright">&copy; WakeQuake Team 2026</span>
+    </div>
+  </footer>
 
   <script src="app.js"></script>
   <script>
@@ -144,6 +144,17 @@
         observer.observe(fillerInfo);
       } else if (fillerInfo) {
         fillerInfo.classList.add('is-visible');
+      }
+
+      const featuresBtn = document.getElementById('heroFeaturesBtn');
+      if (featuresBtn) {
+        featuresBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.body.classList.add('page-fade-out');
+          setTimeout(() => {
+            window.location.href = featuresBtn.getAttribute('href');
+          }, 100);
+        });
       }
     })();
   </script>

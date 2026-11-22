@@ -20,8 +20,8 @@
   --text-subtle: #64748b;
 
   /* Color Palette - Brand & Accents */
-  --accent-primary: #2563eb;
-  --accent-primary-hover: #1d4ed8;
+  --accent-primary: #1e40af;
+  --accent-primary-hover: #1e3a8a;
   --dot-yellow: #f9ed5b;
   --dot-cyan: #3ddce8;
   --dot-purple: #a75bea;
@@ -884,11 +884,6 @@ img {
   text-align: center;
 }
 
-.pricing-card.featured {
-  border-color: var(--accent-primary);
-  box-shadow: var(--shadow-card-hover);
-}
-
 .pricing-ribbon {
   position: absolute;
   top: -12px;
@@ -1318,8 +1313,8 @@ body.features-mockup {
 
 /* ==========================================================================
    Home Hero Banner (index.html)
-   Thin full-width banner: the image is cropped to a short strip
-   instead of being displayed at its natural size.
+   Online design (centered title, dark backdrop, fade-in) kept,
+   but the banner is a thin strip instead of a full-screen block.
    ========================================================================== */
 
 .full-hero-banner {
@@ -1327,39 +1322,186 @@ body.features-mockup {
   width: 100%;
   height: clamp(180px, 32vh, 320px);
   overflow: hidden;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .full-hero-bg {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   max-width: none;
   object-fit: cover;
   object-position: center 55%;
+  opacity: 0.6;
 }
 
 .full-hero-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  padding: 20px 28px;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0) 60%);
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 24px;
 }
 
 .full-hero-title {
+  margin: 0;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
   color: #ffffff;
-  font-size: clamp(1.6rem, 4vw, 2.6rem);
-  font-weight: 800;
   letter-spacing: -0.02em;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
 }
 
 @media (max-width: 768px) {
   .full-hero-banner {
     height: 160px;
   }
+}
 
-  .full-hero-overlay {
-    padding: 14px 16px;
+/* Hero title fade-in from bottom on load */
+@keyframes heroFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.full-hero-title {
+  animation: heroFadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Hide navbar initially on homepage and reveal on scroll */
+.top-navbar.navbar-scroll-reveal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.top-navbar.navbar-scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+body.home-page {
+  padding-top: 0;
+}
+
+/* Filler heading & body next to alarm clock gallery, fading in from right */
+.hero-filler-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-filler-info.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hero-filler-heading {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary, #111827);
+  line-height: 1.25;
+}
+
+.hero-filler-body {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-secondary, #4b5563);
+}
+
+img.avatar-pill {
+  object-fit: cover;
+}
+
+.hero-filler-btn {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background-color: var(--accent-primary);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid var(--accent-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+.hero-filler-btn:hover {
+  background-color: #ffffff;
+  color: var(--accent-primary);
+}
+
+body.page-fade-out {
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.site-footer {
+  width: 100%;
+  padding: 24px 32px;
+  margin-top: 5px;
+  border-top: 1px solid var(--border-subtle, #e5e7eb);
+  background-color: var(--bg-surface, #ffffff);
+}
+
+.site-footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-about-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background-color: var(--accent-primary);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 1px solid var(--accent-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.footer-about-btn:hover {
+  background-color: #ffffff;
+  color: var(--accent-primary);
+}
+
+.footer-copyright {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: var(--text-secondary, #4b5563);
 }
