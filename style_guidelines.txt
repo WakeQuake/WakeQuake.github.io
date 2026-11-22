@@ -1,0 +1,6 @@
+font-family: Helvetica
+background-color:#cbd5e1
+foreground-color:#1e293b;
+top-bar(
+position:fixed
+position:center
