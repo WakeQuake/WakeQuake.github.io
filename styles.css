@@ -1591,15 +1591,6 @@ body.page-fade-out {
   box-shadow: var(--shadow-card);
 }
 
-/* Small label at the top */
-.cs-eyebrow {
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
-}
-
 .cs-title {
   font-size: clamp(1.6rem, 2.6vw, 2.6rem);
   font-weight: 800;
@@ -1692,31 +1683,26 @@ body.page-fade-out {
 
 .hero-card .hero-filler-info {
   padding: clamp(22px, 3vw, 36px);
-  background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 60%, #fdf4ff 100%);
-  border: 1px solid #ddd6fe;
+  background: var(--bg-surface, #ffffff);
+  border: 1px solid var(--border-subtle, #e5e7eb);
   border-left: 6px solid var(--accent-primary);
   border-radius: var(--radius-md);
 }
 
-/* Title with a blue -> purple color gradient */
 .hero-card .hero-filler-heading {
   align-self: flex-start;
   font-size: clamp(1.75rem, 2.4vw, 2.3rem);
   font-weight: 800;
-  background: linear-gradient(90deg, var(--accent-primary), var(--dot-purple));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--text-primary, #111827);
 }
 
 .hero-card .hero-filler-body {
   color: var(--text-secondary);
 }
 
-/* Button with the same blue -> purple gradient */
 .hero-card .hero-filler-btn {
-  background: linear-gradient(90deg, var(--accent-primary), var(--dot-purple));
-  border-color: transparent;
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
 }
 
 .hero-card .hero-filler-btn:hover {
