@@ -8,18 +8,18 @@
 </head>
 <body class="home-page">
 
-  <!-- Full-Width Sticky Top Navigation Bar Following Scroll -->
+ <!-- hidden at the top of the page / fades in once you scroll  -->
   <header class="top-navbar navbar-scroll-reveal" id="topNavbar">
     <div class="top-navbar-inner">
-      <!-- Brand Logo linking to Home Page -->
+      <!-- brand logo -->
       <a href="index.html" class="brand-title">WakeQuake</a>
 
-      <!-- Mobile nav toggle -->
+      <!-- mobile nav toggle (shows up but doesn't)  -->
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
         <span class="nav-toggle-bar"></span>
       </button>
 
-      <!-- Navigation links: Special Home button (no emoji), Product Features, Pricing, Team -->
+      <!-- navigation links: Home, Product Features, Pricing, Team -->
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
         <a href="index.html" class="nav-item special-home-btn active">Home</a>
         <a href="features.html" class="nav-item">Product Features</a>
@@ -29,6 +29,7 @@
     </div>
   </header>
 
+  <!-- banner above it all -->
   <section class="full-hero-banner" aria-label="WakeQuake Hero">
     <img class="full-hero-bg" src="imaged'acceuille.jpeg" alt="WakeQuake Smart Alarm Clock" />
     <div class="full-hero-overlay">
@@ -38,14 +39,14 @@
 
   <div class="app-frame">
 
-    <!-- Workspace Layout -->
+    <!-- layout -->
     <div class="layout-wrapper">
 
-      <!-- Fixed Main Column -->
+      <!-- main column -->
       <main class="main-content">
         <section class="hero-card">
 
-          <!-- Product image gallery -->
+          <!-- product image gallery -->
           <div class="product-gallery">
             <div class="gallery-main">
               <img class="hero-image" id="heroImage" src="mockups/colors/clock-ocean-blue.jpg" alt="WakeQuake smart alarm clock, Ocean Blue finish" />
@@ -81,6 +82,7 @@
             </div>
           </div>
 
+          <!-- animates in when scrolled into view -->
           <div class="hero-filler-info" id="heroFillerInfo">
             <h2 class="hero-filler-heading">Wake Quake</h2>
             <p class="hero-filler-body">
@@ -93,6 +95,7 @@
 
         </section>
 
+        <!-- main selling points / feature grid -->
         <section class="page-card">
           <h2 class="page-title">Why choose WakeQuake?</h2>
           <div class="highlights-grid">
@@ -127,45 +130,5 @@
   </footer>
 
   <script src="app.js"></script>
-  <script>
-    (function () {
-      const navbar = document.getElementById('topNavbar');
-      if (!navbar) return;
-      const toggleNavbar = () => {
-        navbar.classList.toggle('is-visible', window.scrollY > 40);
-      };
-      window.addEventListener('scroll', toggleNavbar, { passive: true });
-      toggleNavbar();
-
-      const fillerInfo = document.getElementById('heroFillerInfo');
-      if (fillerInfo && 'IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                fillerInfo.classList.add('is-visible');
-                observer.unobserve(fillerInfo);
-              }
-            });
-          },
-          { threshold: 0.2 }
-        );
-        observer.observe(fillerInfo);
-      } else if (fillerInfo) {
-        fillerInfo.classList.add('is-visible');
-      }
-
-      const featuresBtn = document.getElementById('heroFeaturesBtn');
-      if (featuresBtn) {
-        featuresBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          document.body.classList.add('page-fade-out');
-          setTimeout(() => {
-            window.location.href = featuresBtn.getAttribute('href');
-          }, 100);
-        });
-      }
-    })();
-  </script>
 </body>
 </html>

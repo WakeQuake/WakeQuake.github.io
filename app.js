@@ -1,4 +1,4 @@
-// Mobile navigation toggle
+// nav 
 document.addEventListener('DOMContentLoaded', function () {
   var navToggle = document.getElementById('navToggle');
   var navLinks = document.getElementById('navLinks');
@@ -17,8 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Product gallery (home): gallery thumbnails and sidebar varieties both
-  // swap the main image, and keep each other's active state in sync.
+  // product
   var heroImage = document.getElementById('heroImage');
   var heroControls = document.querySelectorAll('.gallery-thumb[data-image], .sidebar .variety-item[data-image]');
 
@@ -56,8 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Sidebar links (#anchors): smooth scroll, highlight the target,
-  // and keep the link of the section currently in view marked active.
+  // sidebar links
   var sidebarLinks = Array.prototype.slice.call(document.querySelectorAll('.sidebar a[href^="#"]'));
 
   function setActiveLink(id) {
@@ -98,3 +96,46 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+    // show the sticky navbar once the user scrolls down a bit
+    (function () {
+      // fade in the product intro block once 20% of it enters the viewport
+      const navbar = document.getElementById('topNavbar');
+      if (!navbar) return;
+      const toggleNavbar = () => {
+        navbar.classList.toggle('is-visible', window.scrollY > 40);
+      };
+      window.addEventListener('scroll', toggleNavbar, { passive: true });
+      toggleNavbar(); // run once on load in case the page reloads mid-scroll
+
+      // fallback for older browsers without IntersectionObserver
+      const fillerInfo = document.getElementById('heroFillerInfo');
+      if (fillerInfo && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                fillerInfo.classList.add('is-visible');
+                observer.unobserve(fillerInfo);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+        observer.observe(fillerInfo);
+      } else if (fillerInfo) {
+        fillerInfo.classList.add('is-visible');
+      }
+
+      // quick fade-out transition before navigating to the features page
+      const featuresBtn = document.getElementById('heroFeaturesBtn');
+      if (featuresBtn) {
+        featuresBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.body.classList.add('page-fade-out');
+          setTimeout(() => {
+            window.location.href = featuresBtn.getAttribute('href');
+          }, 100);
+        });
+      }
+    })();
