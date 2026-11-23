@@ -8,18 +8,18 @@
 </head>
 <body class="home-page">
 
-  <!-- Full-Width Sticky Top Navigation Bar Following Scroll -->
+ <!-- hidden at the top of the page / fades in once you scroll  -->
   <header class="top-navbar navbar-scroll-reveal" id="topNavbar">
     <div class="top-navbar-inner">
-      <!-- Brand Logo linking to Home Page -->
+      <!-- brand logo -->
       <a href="index.html" class="brand-title">WakeQuake</a>
 
-      <!-- Mobile nav toggle -->
+      <!-- mobile nav toggle (shows up but doesnt)  -->
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
         <span class="nav-toggle-bar"></span>
       </button>
 
-      <!-- Navigation links: Special Home button (no emoji), Product Features, Pricing, Team -->
+      <!-- navigation links: Special Home button (no emoji), Product Features, Pricing, Team -->
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
         <a href="index.html" class="nav-item special-home-btn active">Home</a>
         <a href="features.html" class="nav-item">Product Features</a>
@@ -29,6 +29,7 @@
     </div>
   </header>
 
+  <!-- banner above it all -->
   <section class="full-hero-banner" aria-label="WakeQuake Hero">
     <img class="full-hero-bg" src="homepagephoto.jpg" alt="WakeQuake Smart Alarm Clock" />
     <div class="full-hero-overlay">
@@ -38,14 +39,14 @@
 
   <div class="app-frame">
 
-    <!-- Workspace Layout -->
+    <!-- layout -->
     <div class="layout-wrapper">
 
-      <!-- Fixed Main Column -->
+      <!-- main column -->
       <main class="main-content">
         <section class="hero-card">
 
-          <!-- Product image gallery -->
+          <!-- product image gallery -->
           <div class="product-gallery">
             <div class="gallery-main">
               <img class="hero-image" id="heroImage" src="mockups/image_purple.jpg" alt="WakeQuake smart alarm clock, Horizon finish" />
@@ -66,6 +67,7 @@
             </div>
           </div>
 
+          <!-- animates in when scrolled into view -->
           <div class="hero-filler-info" id="heroFillerInfo">
             <h2 class="hero-filler-heading">Wake Quake</h2>
             <p class="hero-filler-body">
@@ -78,6 +80,7 @@
 
         </section>
 
+        <!-- main selling points / feature grid -->
         <section class="page-card">
           <h2 class="page-title">Why choose WakeQuake?</h2>
           <div class="highlights-grid">
@@ -113,15 +116,18 @@
 
   <script src="app.js"></script>
   <script>
+    // show the sticky navbar once the user scrolls down a bit
     (function () {
+      // fade in the product intro block once 20% of it enters the viewport
       const navbar = document.getElementById('topNavbar');
       if (!navbar) return;
       const toggleNavbar = () => {
         navbar.classList.toggle('is-visible', window.scrollY > 40);
       };
       window.addEventListener('scroll', toggleNavbar, { passive: true });
-      toggleNavbar();
+      toggleNavbar(); // run once on load in case the page reloads mid-scroll
 
+      // fallback for older browsers without IntersectionObserver
       const fillerInfo = document.getElementById('heroFillerInfo');
       if (fillerInfo && 'IntersectionObserver' in window) {
         const observer = new IntersectionObserver(
@@ -140,6 +146,7 @@
         fillerInfo.classList.add('is-visible');
       }
 
+      // quick fade-out transition before navigating to the features page
       const featuresBtn = document.getElementById('heroFeaturesBtn');
       if (featuresBtn) {
         featuresBtn.addEventListener('click', (e) => {
