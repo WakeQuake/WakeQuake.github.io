@@ -488,24 +488,49 @@ img {
    ========================================================================== */
 
 .hero-card {
-  flex: 1;
+  /* Grow if there is room, but never shrink below its content,
+     otherwise the text under the image overflows into the next card */
+  flex: 1 0 auto;
   min-height: 510px;
   background-color: var(--bg-surface);
   border-radius: 0;
-  display: flex;
+  /* Grid: thumbnails column | main image, text under the main image */
+  display: grid;
+  /* Uses the full width of the card: thumbnails 40%, main image 60% */
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  grid-template-areas:
+    "thumbs main"
+    ".      info";
+  align-content: start;
   padding: 36px;
-  gap: 36px;
+  gap: 24px 14px;
   box-shadow: var(--shadow-panel);
   border: 1px solid var(--border-subtle);
 }
 
-/* Product Gallery (left side of hero) */
+/* Product Gallery: its children (main image + thumbnails) are placed
+   directly in the .hero-card grid */
 .product-gallery {
-  flex: 0 0 380px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+  display: contents;
 }
+
+.product-gallery .gallery-main { grid-area: main; }
+
+/* The main image fills its whole frame (no grey bands) and takes the same
+   height as the 4x4 thumbnail grid next to it */
+.product-gallery .gallery-main {
+  position: relative;
+  align-self: stretch;
+}
+.hero-card .hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+}
+.hero-card .hero-filler-info { grid-area: info; }
 
 .gallery-main {
   flex: 1;
@@ -528,12 +553,15 @@ img {
 }
 
 .gallery-thumbs {
+  flex: 0 0 76px;
   display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
 .gallery-thumb {
-  flex: 1;
+  flex: 0 0 auto;
+  width: 100%;
   min-width: 0;
   height: 64px;
   padding: 0;
@@ -760,11 +788,16 @@ img {
   line-height: 1.5;
 }
 
-/* Summary intro shown at the top of the home page's highlights card */
-.summary-block {
-  padding-bottom: 24px;
-  margin-bottom: 28px;
-  border-bottom: 1px solid var(--border-subtle);
+.summary-card {
+  min-height: 120px;
+  background-color: var(--bg-sidebar);
+  border-radius: 0;
+  padding: 18px 24px;
+  box-shadow: var(--shadow-panel);
+  border: 1px solid var(--border-default);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .summary-title {
@@ -1222,12 +1255,24 @@ img {
     flex: 1 1 calc(50% - 8px);
   }
 
+  /* Small screens: main image, then thumbnails in a row, then the text */
+  .hero-card {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "main"
+      "thumbs"
+      "info";
+    gap: 16px;
+  }
+
   .gallery-thumbs {
+    flex: 0 0 auto;
+    flex-direction: row;
     flex-wrap: wrap;
   }
 
   .gallery-thumb {
-    flex: 1 1 calc(33.333% - 7px);
+    flex: 1 1 calc(25% - 8px);
   }
 }
 
@@ -1311,12 +1356,7 @@ body.features-mockup {
   .features-mockup .card { min-height: 165px; padding: 24px; }
 }
 
-/* ==========================================================================
-   Home Hero Banner (index.html)
-   Online design (centered title, dark backdrop, fade-in) kept,
-   but the banner is a thin strip instead of a full-screen block.
-   ========================================================================== */
-
+/* Full-width homepage hero banner (thin strip instead of full screen) */
 .full-hero-banner {
   position: relative;
   width: 100%;
@@ -1504,4 +1544,177 @@ body.page-fade-out {
   margin-left: auto;
   font-size: 0.9rem;
   color: var(--text-secondary, #4b5563);
+}
+
+/* Home gallery on medium screens: the 4x4 thumbnail grid goes under the
+   main image so the image keeps enough width */
+@media (max-width: 900px) {
+  .hero-card {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "main"
+      "thumbs"
+      "info";
+    gap: 16px;
+  }
+
+  /* Stacked: the main image needs its own height */
+  .product-gallery .gallery-main {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+  }
+}
+
+/* ==========================================================================
+   Challenge illustration (home page, left of the main image)
+   Simple cartoon drawing made only with HTML + CSS
+   ========================================================================== */
+
+/* The whole drawing area (takes the left column of the hero grid) */
+.challenge-scene {
+  grid-area: thumbs;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(36px, 4vw, 64px);
+  padding: 28px;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+/* --- The 3 bubbles --- */
+.scene-bubbles {
+  display: flex;
+  gap: clamp(16px, 2vw, 34px);
+}
+
+.bubble {
+  position: relative;
+  /* Size grows with the screen width (between 80px and 150px) */
+  width: clamp(80px, 8vw, 150px);
+  height: clamp(80px, 8vw, 150px);
+  border: 4px solid var(--text-heading);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: clamp(2.4rem, 4vw, 4.4rem);
+  font-weight: 800;
+}
+
+/* Small tail under each bubble, pointing to the clock */
+.bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  width: 26px;
+  height: 26px;
+  margin-left: -13px;
+  background-color: inherit;
+  border-right: 4px solid var(--text-heading);
+  border-bottom: 4px solid var(--text-heading);
+  transform: rotate(45deg);
+}
+
+.bubble-purple { background-color: var(--dot-purple); }
+.bubble-blue   { background-color: var(--accent-primary); }
+.bubble-green  { background-color: #22c55e; }
+
+/* The 4 math symbols in a 2 x 2 grid */
+.bubble-green {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  padding: 18%;
+  font-size: clamp(1.2rem, 2vw, 2.2rem);
+}
+
+/* --- Bottom row: clock + calendar --- */
+.scene-bottom {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(20px, 2.5vw, 40px);
+}
+
+/* Simple cartoon alarm clock */
+.mini-clock {
+  width: clamp(160px, 16vw, 300px);
+  height: clamp(100px, 10vw, 180px);
+  padding: clamp(12px, 1.2vw, 20px);
+  background-color: var(--accent-primary);
+  border: 4px solid var(--text-heading);
+  border-radius: 28px;
+}
+
+.mini-clock-screen {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--text-heading);
+  border-radius: 14px;
+  color: var(--dot-purple);
+  font-size: clamp(1.6rem, 3vw, 3.2rem);
+  font-weight: 800;
+}
+
+/* Small calendar with 3 green checks */
+.mini-calendar {
+  width: clamp(90px, 9vw, 160px);
+  background-color: #ffffff;
+  border: 4px solid var(--text-heading);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.mini-calendar-top {
+  height: clamp(22px, 2.2vw, 38px);
+  background-color: var(--dot-coral);
+  border-bottom: 4px solid var(--text-heading);
+}
+
+.mini-calendar-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(4px, 0.6vw, 10px);
+  padding: clamp(8px, 1vw, 16px) 0;
+  font-size: clamp(1.1rem, 2vw, 2.1rem);
+}
+
+/* Small screens: smaller bubbles so everything fits */
+@media (max-width: 480px) {
+  .challenge-scene {
+    min-height: 0;
+    padding: 20px 10px;
+  }
+
+  .scene-bubbles {
+    gap: 12px;
+  }
+
+  .bubble {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+
+  .bubble-green {
+    padding: 10px;
+    font-size: 1.05rem;
+  }
+
+  .mini-clock {
+    width: 130px;
+    height: 85px;
+  }
+
+  .mini-clock-screen {
+    font-size: 1.3rem;
+  }
 }
