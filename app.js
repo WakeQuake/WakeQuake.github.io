@@ -1,4 +1,4 @@
-// Mobile navigation toggle
+// nav 
 document.addEventListener('DOMContentLoaded', function () {
   var navToggle = document.getElementById('navToggle');
   var navLinks = document.getElementById('navLinks');
@@ -17,8 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Product gallery (home): gallery thumbnails and sidebar varieties both
-  // swap the main image, and keep each other's active state in sync.
+  // product
   var heroImage = document.getElementById('heroImage');
   var heroControls = document.querySelectorAll('.gallery-thumb[data-image], .sidebar .variety-item[data-image]');
 
@@ -56,8 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Sidebar links (#anchors): smooth scroll, highlight the target,
-  // and keep the link of the section currently in view marked active.
+  // sidebar links
   var sidebarLinks = Array.prototype.slice.call(document.querySelectorAll('.sidebar a[href^="#"]'));
 
   function setActiveLink(id) {
