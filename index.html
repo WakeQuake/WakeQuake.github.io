@@ -115,49 +115,5 @@
   </footer>
 
   <script src="app.js"></script>
-  <script>
-    // show the sticky navbar once the user scrolls down a bit
-    (function () {
-      // fade in the product intro block once 20% of it enters the viewport
-      const navbar = document.getElementById('topNavbar');
-      if (!navbar) return;
-      const toggleNavbar = () => {
-        navbar.classList.toggle('is-visible', window.scrollY > 40);
-      };
-      window.addEventListener('scroll', toggleNavbar, { passive: true });
-      toggleNavbar(); // run once on load in case the page reloads mid-scroll
-
-      // fallback for older browsers without IntersectionObserver
-      const fillerInfo = document.getElementById('heroFillerInfo');
-      if (fillerInfo && 'IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                fillerInfo.classList.add('is-visible');
-                observer.unobserve(fillerInfo);
-              }
-            });
-          },
-          { threshold: 0.2 }
-        );
-        observer.observe(fillerInfo);
-      } else if (fillerInfo) {
-        fillerInfo.classList.add('is-visible');
-      }
-
-      // quick fade-out transition before navigating to the features page
-      const featuresBtn = document.getElementById('heroFeaturesBtn');
-      if (featuresBtn) {
-        featuresBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          document.body.classList.add('page-fade-out');
-          setTimeout(() => {
-            window.location.href = featuresBtn.getAttribute('href');
-          }, 100);
-        });
-      }
-    })();
-  </script>
 </body>
 </html>
