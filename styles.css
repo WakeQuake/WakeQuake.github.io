@@ -1,8 +1,8 @@
 :root {
-  /* Typography */
+  /* typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
-  /* Color Palette - Surfaces */
+  /* color palette - surfaces */
   --bg-canvas: #cbd5e1;
   --bg-navbar: rgba(248, 250, 252, 0.96);
   --bg-sidebar: #f1f5f9;
@@ -12,14 +12,14 @@
   --bg-sidebar-item: #cbd5e1;
   --bg-sidebar-item-hover: #b9c8d8;
 
-  /* Color Palette - Text */
+  /* color palette - text */
   --text-heading: #0f172a;
   --text-primary: #1e293b;
   --text-secondary: #334155;
   --text-muted: #475569;
   --text-subtle: #64748b;
 
-  /* Color Palette - Brand & Accents */
+  /* color palette - brand & accents */
   --accent-primary: #1e40af;
   --accent-primary-hover: #1e3a8a;
   --dot-yellow: #f9ed5b;
@@ -27,39 +27,39 @@
   --dot-purple: #a75bea;
   --dot-coral: #f56f78;
 
-  /* Borders */
+  /* borders */
   --border-subtle: #e2e8f0;
   --border-default: #cbd5e1;
   --border-strong: #94a3b8;
   --border-hover: #94a3b8;
 
-  /* Layout Dimensions */
+  /* layout dimensions */
   --container-width: 100%;
   --navbar-height: 64px;
   --sidebar-width: 210px;
   --layout-gap: 0;
   --panel-min-height: 650px;
 
-  /* Border Radius */
+  /* border radius */
   --radius-xs: 2px;
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-pill: 999px;
 
-  /* Shadows */
+  /* shadows */
   --shadow-navbar: 0 2px 10px rgba(15, 23, 42, 0.08);
   --shadow-panel: 0 2px 6px rgba(15, 23, 42, 0.05);
   --shadow-card: 0 4px 14px rgba(15, 23, 42, 0.05);
   --shadow-card-hover: 0 10px 22px rgba(15, 23, 42, 0.1);
 
-  /* Transitions */
+  /* transitions */
   --transition-fast: 0.15s ease;
   --transition-base: 0.2s ease;
 }
 
 /* ==========================================================================
-   Reset & Base Styles
+   reset & base styles
    ========================================================================== */
 
 *,
@@ -88,7 +88,7 @@ img {
 }
 
 /* ==========================================================================
-   Top Navigation Bar
+   top navigation bar
    ========================================================================== */
 
 .top-navbar {
@@ -199,7 +199,7 @@ img {
 }
 
 /* ==========================================================================
-   Workspace Frame & Shared Layout
+   workspace frame & shared layout
    ========================================================================== */
 
 .app-frame {
@@ -236,7 +236,7 @@ img {
 }
 
 /* ==========================================================================
-   Sidebar
+   sidebar
    ========================================================================== */
 
 .sidebar {
@@ -362,7 +362,7 @@ img {
   color: var(--bg-surface);
 }
 
-/* Team initials in the sidebar */
+/* team initials in the sidebar */
 .mini-avatar {
   flex: none;
   width: 30px;
@@ -378,7 +378,7 @@ img {
   border: 1px solid var(--border-default);
 }
 
-/* Feature color gallery */
+/* feature color gallery */
 .swatch-panel {
   display: flex;
   flex-direction: column;
@@ -440,7 +440,7 @@ img {
   border-color: var(--accent-primary);
 }
 
-/* Card highlighted after a sidebar click */
+/* card highlighted after a sidebar click */
 .is-highlighted {
   animation: highlight-pulse 1.4s ease;
 }
@@ -453,7 +453,7 @@ img {
 }
 
 /* ==========================================================================
-   Main Content & Shared Containers
+   main content & shared containers
    ========================================================================== */
 
 .main-content {
@@ -484,19 +484,19 @@ img {
 }
 
 /* ==========================================================================
-   Home Page Components
+   home page components
    ========================================================================== */
 
 .hero-card {
-  /* Grow if there is room, but never shrink below its content,
+  /* grow if there is room, but never shrink below its content,
      otherwise the text under the image overflows into the next card */
   flex: 1 0 auto;
   min-height: 510px;
   background-color: var(--bg-surface);
   border-radius: 0;
-  /* Grid: thumbnails column | main image, text under the main image */
+  /* grid: thumbnails column | main image, text under the main image */
   display: grid;
-  /* Uses the full width of the card: thumbnails 40%, main image 60% */
+  /* uses the full width of the card: thumbnails 40%, main image 60% */
   grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   grid-template-areas:
     "thumbs main"
@@ -508,7 +508,7 @@ img {
   border: 1px solid var(--border-subtle);
 }
 
-/* Product Gallery: its children (main image + thumbnails) are placed
+/* product: its children (main image + thumbnails) are placed
    directly in the .hero-card grid */
 .product-gallery {
   display: contents;
@@ -516,8 +516,8 @@ img {
 
 .product-gallery .gallery-main { grid-area: main; }
 
-/* The main image fills its whole frame (no grey bands) and takes the same
-   height as the 4x4 thumbnail grid next to it */
+/* main image fills its whole frame (no grey bands) and takes the same
+   height as the thumbnail grid next to it */
 .product-gallery .gallery-main {
   position: relative;
   align-self: stretch;
@@ -591,7 +591,7 @@ img {
   border-color: var(--accent-primary);
 }
 
-/* Product Info (right side of hero) */
+/* product info (right side of hero) */
 .product-info {
   flex: 1;
   min-width: 0;
@@ -758,7 +758,7 @@ img {
   background-color: var(--bg-sidebar-item-hover);
 }
 
-/* Highlights grid (Why WakeQuake) */
+/* highlights grid (Why WakeQuake) */
 .highlights-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -814,7 +814,7 @@ img {
 }
 
 /* ==========================================================================
-   Shared Interactive / Content Cards (Features, Pricing, Team)
+   shared interactive / content cards (Features, Pricing, Team)
    ========================================================================== */
 
 .fcard,
@@ -837,7 +837,7 @@ img {
 }
 
 /* ==========================================================================
-   Product Features Page
+   product features page
    ========================================================================== */
 
 .fgrid {
@@ -898,7 +898,7 @@ img {
 .coral  { background-color: var(--dot-coral); }
 
 /* ==========================================================================
-   Pricing Page
+   pricing page
    ========================================================================== */
 
 .pricing-grid {
@@ -1027,7 +1027,7 @@ img {
 }
 
 /* ==========================================================================
-   Team Page
+   team page
    ========================================================================== */
 
 .team-grid {
@@ -1078,7 +1078,7 @@ img {
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   responsive breakpoints
    ========================================================================== */
 
 /* Tablet */
@@ -1255,7 +1255,7 @@ img {
     flex: 1 1 calc(50% - 8px);
   }
 
-  /* Small screens: main image, then thumbnails in a row, then the text */
+  /* petites screens: main image, then thumbnails in a row, then the text */
   .hero-card {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
@@ -1304,7 +1304,7 @@ body.features-mockup {
 .features-mockup .sidebar,
 .features-mockup .content { border: 1px solid rgba(255, 255, 255, .8); border-radius: 7px; box-shadow: 0 2px 8px rgba(48, 70, 92, .1); }
 
-/* Also neutralises the global .sidebar layout (sticky, flex, fixed height) */
+/* neutralises the global .sidebar layout (sticky, flex, fixed height) */
 .features-mockup .sidebar {
   display: block;
   position: static;
@@ -1402,7 +1402,7 @@ body.features-mockup {
   }
 }
 
-/* Hero title fade-in from bottom on load */
+/* hero title fade-in from bottom on load */
 @keyframes heroFadeInUp {
   from {
     opacity: 0;
@@ -1418,7 +1418,7 @@ body.features-mockup {
   animation: heroFadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Hide navbar initially on homepage and reveal on scroll */
+/* navbar initially on homepage and reveal on scroll */
 .top-navbar.navbar-scroll-reveal {
   position: fixed;
   top: 0;
@@ -1441,7 +1441,7 @@ body.home-page {
   padding-top: 0;
 }
 
-/* Filler heading & body next to alarm clock gallery, fading in from right */
+/* filler heading & body next to alarm clock gallery, fading in from right */
 .hero-filler-info {
   display: flex;
   flex-direction: column;
@@ -1546,7 +1546,7 @@ body.page-fade-out {
   color: var(--text-secondary, #4b5563);
 }
 
-/* Home gallery on medium screens: the 4x4 thumbnail grid goes under the
+/* home box on medium screens: thumbnail grid goes under the
    main image so the image keeps enough width */
 @media (max-width: 900px) {
   .hero-card {
@@ -1566,9 +1566,8 @@ body.page-fade-out {
 }
 
 /* ==========================================================================
-   Challenge panel (home page, left of the main image)
-   A background photo, a color gradient in the app colors on top of it,
-   and the text over everything. HTML + CSS only.
+   challenge panel (home page, left of the main image)
+   background photo, a color gradient in the app colors on top of it
    ========================================================================== */
 
 .challenge-scene {
@@ -1598,7 +1597,7 @@ body.page-fade-out {
   letter-spacing: -0.02em;
 }
 
-/* --- The 3 challenges, as light "glass" pills --- */
+/* --- 3 challenges--- */
 .cs-challenges {
   list-style: none;
   display: flex;
@@ -1618,7 +1617,7 @@ body.page-fade-out {
   font-size: 0.95rem;
 }
 
-/* Colored round icon in each pill */
+/* round icon in each round */
 .cs-icon {
   width: 34px;
   height: 34px;
@@ -1635,7 +1634,7 @@ body.page-fade-out {
 .cs-icon-blue   { background-color: var(--dot-cyan); }
 .cs-icon-green  { background-color: #22c55e; }
 
-/* --- Tasks with green checks --- */
+/* --- tasks with green checks --- */
 .cs-tasks {
   list-style: none;
   display: flex;
@@ -1664,7 +1663,7 @@ body.page-fade-out {
   font-weight: 800;
 }
 
-/* --- Bottom sentence --- */
+/* --- bottom sentence --- */
 .cs-banner {
   padding-top: 18px;
   border-top: 1px solid rgba(255, 255, 255, 0.25);
@@ -1677,8 +1676,8 @@ body.page-fade-out {
 }
 
 /* ==========================================================================
-   Home text block under the two images (Wake Quake + text + button)
-   Light card with the app colors: blue -> purple
+   home text block under the two images (Wake Quake + text + button)
+   light card with the app colors: blue -> purple
    ========================================================================== */
 
 .hero-card .hero-filler-info {
