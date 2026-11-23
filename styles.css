@@ -500,7 +500,7 @@ img {
   grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   grid-template-areas:
     "thumbs main"
-    ".      info";
+    "info   info";
   align-content: start;
   padding: 36px;
   gap: 24px 14px;
@@ -1566,155 +1566,160 @@ body.page-fade-out {
 }
 
 /* ==========================================================================
-   Challenge illustration (home page, left of the main image)
-   Simple cartoon drawing made only with HTML + CSS
+   Challenge panel (home page, left of the main image)
+   A background photo, a color gradient in the app colors on top of it,
+   and the text over everything. HTML + CSS only.
    ========================================================================== */
 
-/* The whole drawing area (takes the left column of the hero grid) */
 .challenge-scene {
   grid-area: thumbs;
-  min-height: 520px;
+  min-height: 420px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  padding: clamp(24px, 3vw, 44px);
+  border-radius: var(--radius-md);
+  color: #ffffff;
+  /* 2 backgrounds: the gradient (first = on top) and the photo below it */
+  background:
+    linear-gradient(135deg,
+      rgba(30, 58, 138, 0.94) 0%,
+      rgba(30, 64, 175, 0.82) 45%,
+      rgba(167, 91, 234, 0.78) 100%),
+    url("mockups/homepageheader.jpg") 35% center / cover no-repeat;
+  box-shadow: var(--shadow-card);
+}
+
+/* Small label at the top */
+.cs-eyebrow {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.cs-title {
+  font-size: clamp(1.6rem, 2.6vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* --- The 3 challenges, as light "glass" pills --- */
+.cs-challenges {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cs-challenges li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px 6px 6px;
+  background-color: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Colored round icon in each pill */
+.cs-icon {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(36px, 4vw, 64px);
-  padding: 28px;
-  background-color: var(--bg-subtle);
-  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.cs-icon-purple { background-color: var(--dot-purple); }
+.cs-icon-blue   { background-color: var(--dot-cyan); }
+.cs-icon-green  { background-color: #22c55e; }
+
+/* --- Tasks with green checks --- */
+.cs-tasks {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.cs-tasks li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cs-tasks li::before {
+  content: "✓";
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #22c55e;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+/* --- Bottom sentence --- */
+.cs-banner {
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.cs-banner span {
+  color: var(--dot-yellow);
+}
+
+/* ==========================================================================
+   Home text block under the two images (Wake Quake + text + button)
+   Light card with the app colors: blue -> purple
+   ========================================================================== */
+
+.hero-card .hero-filler-info {
+  padding: clamp(22px, 3vw, 36px);
+  background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 60%, #fdf4ff 100%);
+  border: 1px solid #ddd6fe;
+  border-left: 6px solid var(--accent-primary);
   border-radius: var(--radius-md);
 }
 
-/* --- The 3 bubbles --- */
-.scene-bubbles {
-  display: flex;
-  gap: clamp(16px, 2vw, 34px);
-}
-
-.bubble {
-  position: relative;
-  /* Size grows with the screen width (between 80px and 150px) */
-  width: clamp(80px, 8vw, 150px);
-  height: clamp(80px, 8vw, 150px);
-  border: 4px solid var(--text-heading);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-size: clamp(2.4rem, 4vw, 4.4rem);
+/* Title with a blue -> purple color gradient */
+.hero-card .hero-filler-heading {
+  align-self: flex-start;
+  font-size: clamp(1.75rem, 2.4vw, 2.3rem);
   font-weight: 800;
+  background: linear-gradient(90deg, var(--accent-primary), var(--dot-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* Small tail under each bubble, pointing to the clock */
-.bubble::after {
-  content: "";
-  position: absolute;
-  bottom: -18px;
-  left: 50%;
-  width: 26px;
-  height: 26px;
-  margin-left: -13px;
-  background-color: inherit;
-  border-right: 4px solid var(--text-heading);
-  border-bottom: 4px solid var(--text-heading);
-  transform: rotate(45deg);
+.hero-card .hero-filler-body {
+  color: var(--text-secondary);
 }
 
-.bubble-purple { background-color: var(--dot-purple); }
-.bubble-blue   { background-color: var(--accent-primary); }
-.bubble-green  { background-color: #22c55e; }
-
-/* The 4 math symbols in a 2 x 2 grid */
-.bubble-green {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
-  padding: 18%;
-  font-size: clamp(1.2rem, 2vw, 2.2rem);
+/* Button with the same blue -> purple gradient */
+.hero-card .hero-filler-btn {
+  background: linear-gradient(90deg, var(--accent-primary), var(--dot-purple));
+  border-color: transparent;
 }
 
-/* --- Bottom row: clock + calendar --- */
-.scene-bottom {
-  display: flex;
-  align-items: flex-end;
-  gap: clamp(20px, 2.5vw, 40px);
-}
-
-/* Simple cartoon alarm clock */
-.mini-clock {
-  width: clamp(160px, 16vw, 300px);
-  height: clamp(100px, 10vw, 180px);
-  padding: clamp(12px, 1.2vw, 20px);
-  background-color: var(--accent-primary);
-  border: 4px solid var(--text-heading);
-  border-radius: 28px;
-}
-
-.mini-clock-screen {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--text-heading);
-  border-radius: 14px;
-  color: var(--dot-purple);
-  font-size: clamp(1.6rem, 3vw, 3.2rem);
-  font-weight: 800;
-}
-
-/* Small calendar with 3 green checks */
-.mini-calendar {
-  width: clamp(90px, 9vw, 160px);
-  background-color: #ffffff;
-  border: 4px solid var(--text-heading);
-  border-radius: 18px;
-  overflow: hidden;
-}
-
-.mini-calendar-top {
-  height: clamp(22px, 2.2vw, 38px);
-  background-color: var(--dot-coral);
-  border-bottom: 4px solid var(--text-heading);
-}
-
-.mini-calendar-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(4px, 0.6vw, 10px);
-  padding: clamp(8px, 1vw, 16px) 0;
-  font-size: clamp(1.1rem, 2vw, 2.1rem);
-}
-
-/* Small screens: smaller bubbles so everything fits */
-@media (max-width: 480px) {
-  .challenge-scene {
-    min-height: 0;
-    padding: 20px 10px;
-  }
-
-  .scene-bubbles {
-    gap: 12px;
-  }
-
-  .bubble {
-    width: 70px;
-    height: 70px;
-    font-size: 2rem;
-  }
-
-  .bubble-green {
-    padding: 10px;
-    font-size: 1.05rem;
-  }
-
-  .mini-clock {
-    width: 130px;
-    height: 85px;
-  }
-
-  .mini-clock-screen {
-    font-size: 1.3rem;
-  }
+.hero-card .hero-filler-btn:hover {
+  background: #ffffff;
+  border-color: var(--accent-primary);
 }
